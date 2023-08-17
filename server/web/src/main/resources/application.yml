@@ -1,0 +1,23 @@
+server:
+  port: 7777
+
+spring:
+  application:
+    name: bgframe
+  profiles:
+    active: dev #激活的配置文件
+  jackson:
+    time-zone: GMT+8 #指定json中时间转换时区为+8时区，默认为0时区
+    date-format: yyyy-MM-dd HH:mm:ss #指定时间格式化的格式
+    serialization:
+      write-dates-as-timestamps: false
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  servlet:
+    multipart:
+      max-file-size: 10MB
+
+system:
+  upload:
+    path: E:/consult/upload/
