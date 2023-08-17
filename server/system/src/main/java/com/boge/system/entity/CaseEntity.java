@@ -25,6 +25,10 @@ public class CaseEntity extends BaseEntity<Long> implements Serializable {
      */
     private String title;
     /**
+     * 公司
+     */
+    private String company;
+    /**
      * 公司logo（文件id）
      */
     private Long logo;

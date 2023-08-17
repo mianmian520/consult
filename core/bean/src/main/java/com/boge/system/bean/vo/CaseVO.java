@@ -31,6 +31,12 @@ public class CaseVO extends BaseVO<Long> implements Serializable {
     private String title;
 
     /**
+     * 公司
+     */
+    @ApiModelProperty("公司")
+    private String company;
+
+    /**
      * 公司logo（文件id）
      */
     @ApiModelProperty("公司logo（文件id）")

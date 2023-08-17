@@ -7,7 +7,9 @@ import com.boge.system.bean.dto.CaseDTO;
 import com.boge.system.bean.vo.CaseVO;
 import com.boge.system.dao.CaseDao;
 import com.boge.system.entity.CaseEntity;
+import com.boge.system.entity.TagEntity;
 import com.boge.system.service.CaseService;
+import com.boge.system.service.TagService;
 import org.springframework.stereotype.Service;
 
 /**
@@ -19,9 +21,25 @@ import org.springframework.stereotype.Service;
 @Service("caseService")
 public class CaseServiceImpl extends BaseServiceImpl<Long, CaseDTO, CaseVO, CaseEntity, CaseDao> implements CaseService {
 
+    private final TagService tagService;
+
+    public CaseServiceImpl(TagService tagService) {
+        this.tagService = tagService;
+    }
+
     @Override
     public PageBean<CaseVO> selectPage(CaseDTO dto) {
         Page<CaseVO> page = baseMapper.queryPage(new Page<>(dto.getCurrPage(), dto.getPageSize()), dto);
         return PageBean.convert(page, CaseVO.class);
+    }
+
+    @Override
+    public CaseVO detail(Long id) {
+        CaseVO detail = super.detail(id);
+        TagEntity serverTag = tagService.getById(detail.getServerTag());
+        detail.setServerTagTitle(serverTag != null ? serverTag.getTitle() : "");
+        TagEntity professionTag = tagService.getById(detail.getProfessionTag());
+        detail.setProfessionTagTitle(professionTag != null ? professionTag.getTitle() : "");
+        return detail;
     }
 }

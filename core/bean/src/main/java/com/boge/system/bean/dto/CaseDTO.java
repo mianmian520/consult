@@ -34,6 +34,13 @@ public class CaseDTO extends BaseDTO<Long> implements Serializable {
     private String title;
 
     /**
+     * 公司
+     */
+    @ApiModelProperty("公司")
+    @NotBlank(message = "公司不能为空", groups = {Validator.Create.class})
+    private String company;
+
+    /**
      * 公司logo（文件id）
      */
     @ApiModelProperty("公司logo（文件id）")
@@ -44,7 +51,6 @@ public class CaseDTO extends BaseDTO<Long> implements Serializable {
      * 公司网址
      */
     @ApiModelProperty("公司网址")
-    @NotBlank(message = "公司网址不能为空", groups = {Validator.Create.class})
     private String website;
 
     /**
