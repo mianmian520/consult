@@ -7,6 +7,7 @@ import com.boge.core.common.base.model.BaseVO;
 import com.boge.core.common.base.model.PageBean;
 import com.boge.core.common.base.service.BaseService;
 import com.boge.core.common.exception.CustomException;
+import com.boge.core.common.model.Validator;
 import com.boge.core.common.response.Result;
 import io.swagger.annotations.ApiOperation;
 import lombok.NoArgsConstructor;
@@ -46,7 +47,7 @@ public abstract class BaseController<T, DTO extends BaseDTO<T>, VO extends BaseV
      */
     @ApiOperation("新增")
     @PostMapping("/save")
-    public Result<Boolean> save(@Validated @RequestBody DTO dto) throws CustomException {
+    public Result<Boolean> save(@Validated(Validator.Create.class) @RequestBody DTO dto) throws CustomException {
         return Result.success("新增成功", getService().save(dto));
     }
 
@@ -56,7 +57,7 @@ public abstract class BaseController<T, DTO extends BaseDTO<T>, VO extends BaseV
      */
     @ApiOperation("修改")
     @PostMapping("/modify")
-    public Result<Boolean> modify(@Validated @RequestBody DTO dto) throws CustomException {
+    public Result<Boolean> modify(@Validated(Validator.Modify.class) @RequestBody DTO dto) throws CustomException {
         return Result.success("修改成功", getService().modify(dto));
     }
 

@@ -1,7 +1,10 @@
 package com.boge.core.common.base.model;
 
+import com.boge.core.common.model.Validator;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -15,16 +18,19 @@ public class BaseDTO<T> implements Serializable {
     /**
      * 主键id
      */
+    @NotNull(message = "主键不能为空", groups = {Validator.Modify.class})
     private T id;
 
     /**
      * 查询页码 默认为1
      */
+    @ApiModelProperty("当前页，默认为1")
     private Integer currPage;
 
     /**
      * 每页大小 默认10
      */
+    @ApiModelProperty("页大小,默认10")
     private Integer pageSize;
 
     public Integer getCurrPage() {
