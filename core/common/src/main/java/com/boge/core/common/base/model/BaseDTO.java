@@ -18,6 +18,7 @@ public class BaseDTO<T> implements Serializable {
     /**
      * 主键id
      */
+    @ApiModelProperty("主键id")
     @NotNull(message = "主键不能为空", groups = {Validator.Modify.class})
     private T id;
 

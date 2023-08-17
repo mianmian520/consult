@@ -1,5 +1,6 @@
 package com.boge.core.common.base.model;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -15,5 +16,6 @@ public class BaseVO<T> implements Serializable {
     /**
      * 主键id
      */
+    @ApiModelProperty("主键id")
     private T id;
 }
