@@ -1,10 +1,10 @@
 package com.boge.system.service;
 
 import com.boge.core.common.base.service.BaseService;
-import com.boge.system.entity.CurriculumVitaeEntity;
-import com.boge.system.dao.CurriculumVitaeDao;
 import com.boge.system.bean.dto.CurriculumVitaeDTO;
 import com.boge.system.bean.vo.CurriculumVitaeVO;
+import com.boge.system.dao.CurriculumVitaeDao;
+import com.boge.system.entity.CurriculumVitaeEntity;
 
 /**
  * 简历表(CurriculumVitae)表服务接口

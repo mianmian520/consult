@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
-
 import java.util.Date;
 
 /**
@@ -36,7 +35,7 @@ public class LeaveWordEntity extends BaseEntity<Long> implements Serializable {
     /**
      * 网址
      */
-    private String wesite;
+    private String website;
     /**
      * 留言时间
      */

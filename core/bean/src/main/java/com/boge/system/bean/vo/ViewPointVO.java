@@ -1,14 +1,15 @@
 package com.boge.system.bean.vo;
 
 import com.boge.core.common.base.model.BaseVO;
+import com.boge.core.common.consts.DateConstants;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-
-import java.util.Date;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * 观点表(ViewPoint)实体类
@@ -40,7 +41,7 @@ public class ViewPointVO extends BaseVO<Long> implements Serializable {
      * 作者头像（文件id）
      */
     @ApiModelProperty("作者头像（文件id）")
-    private Integer authorImage;
+    private Long authorImage;
 
     /**
      * 观点人物
@@ -52,7 +53,7 @@ public class ViewPointVO extends BaseVO<Long> implements Serializable {
      * 观点人物头像（文件id）
      */
     @ApiModelProperty("观点人物头像（文件id）")
-    private Integer personImage;
+    private Long personImage;
 
     /**
      * 类型 1、增长观点 2、项目日记 3、公司动态 4、设计观点
@@ -64,7 +65,7 @@ public class ViewPointVO extends BaseVO<Long> implements Serializable {
      * 题图（文件id）
      */
     @ApiModelProperty("题图（文件id）")
-    private Integer viewImage;
+    private Long viewImage;
 
     /**
      * 正文
@@ -76,6 +77,7 @@ public class ViewPointVO extends BaseVO<Long> implements Serializable {
      * 创建时间
      */
     @ApiModelProperty("创建时间")
+    @JsonFormat(pattern = DateConstants.YY_MM_DD_HH_MM_SS)
     private Date time;
 }
 

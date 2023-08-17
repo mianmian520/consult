@@ -1,13 +1,10 @@
 package com.boge.system.bean.dto;
 
 import com.boge.core.common.base.model.BaseDTO;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
-import java.util.Date;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 
@@ -29,7 +26,7 @@ public class CurriculumVitaeDTO extends BaseDTO<Long> implements Serializable {
      * 职位id
      */
     @ApiModelProperty("职位id")
-    private Integer positionId;
+    private Long positionId;
 
     /**
      * 姓名
@@ -54,11 +51,5 @@ public class CurriculumVitaeDTO extends BaseDTO<Long> implements Serializable {
      */
     @ApiModelProperty("邮箱")
     private String email;
-
-    /**
-     * 时间
-     */
-    @ApiModelProperty("时间")
-    private Date time;
 }
 

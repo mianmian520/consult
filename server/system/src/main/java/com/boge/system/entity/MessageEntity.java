@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
-
 import java.util.Date;
 
 /**
@@ -32,7 +31,7 @@ public class MessageEntity extends BaseEntity<Long> implements Serializable {
     /**
      * 作者头像（文件id）
      */
-    private Integer authorImage;
+    private Long authorImage;
     /**
      * 摘要
      */
@@ -44,7 +43,7 @@ public class MessageEntity extends BaseEntity<Long> implements Serializable {
     /**
      * 题图（文件id）
      */
-    private Integer messageImage;
+    private Long messageImage;
     /**
      * 正文
      */

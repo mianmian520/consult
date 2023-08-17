@@ -1,10 +1,10 @@
 package com.boge.system.service;
 
 import com.boge.core.common.base.service.BaseService;
-import com.boge.system.entity.MessageEntity;
-import com.boge.system.dao.MessageDao;
 import com.boge.system.bean.dto.MessageDTO;
 import com.boge.system.bean.vo.MessageVO;
+import com.boge.system.dao.MessageDao;
+import com.boge.system.entity.MessageEntity;
 
 /**
  * 资讯表(Message)表服务接口

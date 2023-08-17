@@ -1,13 +1,10 @@
 package com.boge.system.bean.dto;
 
 import com.boge.core.common.base.model.BaseDTO;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
-import java.util.Date;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 
@@ -23,7 +20,6 @@ import java.io.Serializable;
 public class ViewPointDTO extends BaseDTO<Long> implements Serializable {
 
     private static final long serialVersionUID = 849759314857009462L;
-
 
     /**
      * 观点标题
@@ -41,7 +37,7 @@ public class ViewPointDTO extends BaseDTO<Long> implements Serializable {
      * 作者头像（文件id）
      */
     @ApiModelProperty("作者头像（文件id）")
-    private Integer authorImage;
+    private Long authorImage;
 
     /**
      * 观点人物
@@ -53,7 +49,7 @@ public class ViewPointDTO extends BaseDTO<Long> implements Serializable {
      * 观点人物头像（文件id）
      */
     @ApiModelProperty("观点人物头像（文件id）")
-    private Integer personImage;
+    private Long personImage;
 
     /**
      * 类型 1、增长观点 2、项目日记 3、公司动态 4、设计观点
@@ -65,7 +61,7 @@ public class ViewPointDTO extends BaseDTO<Long> implements Serializable {
      * 题图（文件id）
      */
     @ApiModelProperty("题图（文件id）")
-    private Integer viewImage;
+    private Long viewImage;
 
     /**
      * 正文
@@ -73,10 +69,5 @@ public class ViewPointDTO extends BaseDTO<Long> implements Serializable {
     @ApiModelProperty("正文")
     private String mainBody;
 
-    /**
-     * 创建时间
-     */
-    @ApiModelProperty("创建时间")
-    private Date time;
 }
 

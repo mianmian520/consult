@@ -4,15 +4,14 @@ import com.boge.core.common.base.controller.BaseController;
 import com.boge.core.common.base.service.BaseService;
 import com.boge.system.bean.dto.MessageDTO;
 import com.boge.system.bean.vo.MessageVO;
+import com.boge.system.dao.MessageDao;
 import com.boge.system.entity.MessageEntity;
 import com.boge.system.service.MessageService;
-import com.boge.system.dao.MessageDao;
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-
-import io.swagger.annotations.Api;
 
 /**
  * 资讯表(Message)表控制层

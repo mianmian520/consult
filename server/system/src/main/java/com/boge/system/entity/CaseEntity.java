@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
-
 import java.util.Date;
 
 /**
@@ -28,7 +27,7 @@ public class CaseEntity extends BaseEntity<Long> implements Serializable {
     /**
      * 公司logo（文件id）
      */
-    private Integer logo;
+    private Long logo;
     /**
      * 公司网址
      */
@@ -36,15 +35,15 @@ public class CaseEntity extends BaseEntity<Long> implements Serializable {
     /**
      * 服务标签
      */
-    private Integer serverTag;
+    private Long serverTag;
     /**
      * 行业标签
      */
-    private Integer professionTag;
+    private Long professionTag;
     /**
-     * 类型 网站建设、广告运营、小程序APP
+     * 类型 1、网站建设 2、广告运营 3、小程序APP
      */
-    private String type;
+    private Integer type;
     /**
      * 案例正文
      */
@@ -52,7 +51,7 @@ public class CaseEntity extends BaseEntity<Long> implements Serializable {
     /**
      * 题图（文件id）
      */
-    private Integer caseImage;
+    private Long caseImage;
     /**
      * 时间
      */

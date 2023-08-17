@@ -1,12 +1,10 @@
 package com.boge.core.common.base.model;
 
-import com.baomidou.mybatisplus.annotation.*;
-import com.boge.core.common.consts.DateConstants;
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * 基础Entity类

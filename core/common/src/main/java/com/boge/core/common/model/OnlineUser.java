@@ -1,9 +1,6 @@
 package com.boge.core.common.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-
-import java.util.List;
 
 /**
  * 在线用户

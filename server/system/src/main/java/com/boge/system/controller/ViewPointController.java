@@ -4,15 +4,14 @@ import com.boge.core.common.base.controller.BaseController;
 import com.boge.core.common.base.service.BaseService;
 import com.boge.system.bean.dto.ViewPointDTO;
 import com.boge.system.bean.vo.ViewPointVO;
+import com.boge.system.dao.ViewPointDao;
 import com.boge.system.entity.ViewPointEntity;
 import com.boge.system.service.ViewPointService;
-import com.boge.system.dao.ViewPointDao;
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-
-import io.swagger.annotations.Api;
 
 /**
  * 观点表(ViewPoint)表控制层

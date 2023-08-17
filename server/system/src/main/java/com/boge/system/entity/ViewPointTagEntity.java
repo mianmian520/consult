@@ -23,10 +23,10 @@ public class ViewPointTagEntity extends BaseEntity<Long> implements Serializable
     /**
      * 观点id
      */
-    private Integer pointId;
+    private Long pointId;
     /**
      * 标签id
      */
-    private Integer tagId;
+    private Long tagId;
 }
 

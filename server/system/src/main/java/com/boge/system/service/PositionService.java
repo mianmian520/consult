@@ -1,10 +1,10 @@
 package com.boge.system.service;
 
 import com.boge.core.common.base.service.BaseService;
-import com.boge.system.entity.PositionEntity;
-import com.boge.system.dao.PositionDao;
 import com.boge.system.bean.dto.PositionDTO;
 import com.boge.system.bean.vo.PositionVO;
+import com.boge.system.dao.PositionDao;
+import com.boge.system.entity.PositionEntity;
 
 /**
  * 职位表(Position)表服务接口

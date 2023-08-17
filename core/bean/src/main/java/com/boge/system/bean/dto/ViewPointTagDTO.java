@@ -1,11 +1,10 @@
 package com.boge.system.bean.dto;
 
 import com.boge.core.common.base.model.BaseDTO;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 
@@ -27,12 +26,12 @@ public class ViewPointTagDTO extends BaseDTO<Long> implements Serializable {
      * 观点id
      */
     @ApiModelProperty("观点id")
-    private Integer pointId;
+    private Long pointId;
 
     /**
      * 标签id
      */
     @ApiModelProperty("标签id")
-    private Integer tagId;
+    private Long tagId;
 }
 

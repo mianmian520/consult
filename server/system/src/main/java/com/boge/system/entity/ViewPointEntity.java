@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
-
 import java.util.Date;
 
 /**
@@ -32,7 +31,7 @@ public class ViewPointEntity extends BaseEntity<Long> implements Serializable {
     /**
      * 作者头像（文件id）
      */
-    private Integer authorImage;
+    private Long authorImage;
     /**
      * 观点人物
      */
@@ -40,7 +39,7 @@ public class ViewPointEntity extends BaseEntity<Long> implements Serializable {
     /**
      * 观点人物头像（文件id）
      */
-    private Integer personImage;
+    private Long personImage;
     /**
      * 类型 1、增长观点 2、项目日记 3、公司动态 4、设计观点
      */
@@ -48,7 +47,7 @@ public class ViewPointEntity extends BaseEntity<Long> implements Serializable {
     /**
      * 题图（文件id）
      */
-    private Integer viewImage;
+    private Long viewImage;
     /**
      * 正文
      */

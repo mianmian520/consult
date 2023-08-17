@@ -4,15 +4,14 @@ import com.boge.core.common.base.controller.BaseController;
 import com.boge.core.common.base.service.BaseService;
 import com.boge.system.bean.dto.LeaveWordDTO;
 import com.boge.system.bean.vo.LeaveWordVO;
+import com.boge.system.dao.LeaveWordDao;
 import com.boge.system.entity.LeaveWordEntity;
 import com.boge.system.service.LeaveWordService;
-import com.boge.system.dao.LeaveWordDao;
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-
-import io.swagger.annotations.Api;
 
 /**
  * 留言表(LeaveWord)表控制层

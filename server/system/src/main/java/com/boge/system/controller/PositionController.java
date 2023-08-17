@@ -4,15 +4,14 @@ import com.boge.core.common.base.controller.BaseController;
 import com.boge.core.common.base.service.BaseService;
 import com.boge.system.bean.dto.PositionDTO;
 import com.boge.system.bean.vo.PositionVO;
+import com.boge.system.dao.PositionDao;
 import com.boge.system.entity.PositionEntity;
 import com.boge.system.service.PositionService;
-import com.boge.system.dao.PositionDao;
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-
-import io.swagger.annotations.Api;
 
 /**
  * 职位表(Position)表控制层

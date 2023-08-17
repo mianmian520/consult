@@ -1,13 +1,10 @@
 package com.boge.system.bean.dto;
 
 import com.boge.core.common.base.model.BaseDTO;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
-import java.util.Date;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 
@@ -23,7 +20,6 @@ import java.io.Serializable;
 public class MessageDTO extends BaseDTO<Long> implements Serializable {
 
     private static final long serialVersionUID = -15038340256631047L;
-
 
     /**
      * 资讯标题
@@ -41,7 +37,7 @@ public class MessageDTO extends BaseDTO<Long> implements Serializable {
      * 作者头像（文件id）
      */
     @ApiModelProperty("作者头像（文件id）")
-    private Integer authorImage;
+    private Long authorImage;
 
     /**
      * 摘要
@@ -59,7 +55,7 @@ public class MessageDTO extends BaseDTO<Long> implements Serializable {
      * 题图（文件id）
      */
     @ApiModelProperty("题图（文件id）")
-    private Integer messageImage;
+    private Long messageImage;
 
     /**
      * 正文
@@ -67,10 +63,5 @@ public class MessageDTO extends BaseDTO<Long> implements Serializable {
     @ApiModelProperty("正文")
     private String mainBody;
 
-    /**
-     * 时间
-     */
-    @ApiModelProperty("时间")
-    private Date time;
 }
 

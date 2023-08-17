@@ -1,14 +1,15 @@
 package com.boge.system.bean.vo;
 
 import com.boge.core.common.base.model.BaseVO;
+import com.boge.core.common.consts.DateConstants;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-
-import java.util.Date;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * 留言表(LeaveWord)实体类
@@ -46,12 +47,13 @@ public class LeaveWordVO extends BaseVO<Long> implements Serializable {
      * 网址
      */
     @ApiModelProperty("网址")
-    private String wesite;
+    private String website;
 
     /**
      * 留言时间
      */
     @ApiModelProperty("留言时间")
+    @JsonFormat(pattern = DateConstants.YY_MM_DD_HH_MM_SS)
     private Date time;
 }
 

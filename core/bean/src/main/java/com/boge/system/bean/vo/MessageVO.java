@@ -1,14 +1,15 @@
 package com.boge.system.bean.vo;
 
 import com.boge.core.common.base.model.BaseVO;
+import com.boge.core.common.consts.DateConstants;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-
-import java.util.Date;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * 资讯表(Message)实体类
@@ -40,7 +41,7 @@ public class MessageVO extends BaseVO<Long> implements Serializable {
      * 作者头像（文件id）
      */
     @ApiModelProperty("作者头像（文件id）")
-    private Integer authorImage;
+    private Long authorImage;
 
     /**
      * 摘要
@@ -58,7 +59,7 @@ public class MessageVO extends BaseVO<Long> implements Serializable {
      * 题图（文件id）
      */
     @ApiModelProperty("题图（文件id）")
-    private Integer messageImage;
+    private Long messageImage;
 
     /**
      * 正文
@@ -70,6 +71,7 @@ public class MessageVO extends BaseVO<Long> implements Serializable {
      * 时间
      */
     @ApiModelProperty("时间")
+    @JsonFormat(pattern = DateConstants.YY_MM_DD_HH_MM_SS)
     private Date time;
 }
 

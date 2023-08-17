@@ -1,13 +1,10 @@
 package com.boge.system.bean.dto;
 
 import com.boge.core.common.base.model.BaseDTO;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
-import java.util.Date;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 
@@ -60,11 +57,5 @@ public class SubscribeDTO extends BaseDTO<Long> implements Serializable {
      */
     @ApiModelProperty("邮件")
     private String email;
-
-    /**
-     * 预约时间
-     */
-    @ApiModelProperty("预约时间")
-    private Date time;
 }
 

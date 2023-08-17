@@ -1,14 +1,15 @@
 package com.boge.system.bean.vo;
 
 import com.boge.core.common.base.model.BaseVO;
+import com.boge.core.common.consts.DateConstants;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-
-import java.util.Date;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * 案例表(Case)实体类
@@ -33,7 +34,7 @@ public class CaseVO extends BaseVO<Long> implements Serializable {
      * 公司logo（文件id）
      */
     @ApiModelProperty("公司logo（文件id）")
-    private Integer logo;
+    private Long logo;
 
     /**
      * 公司网址
@@ -45,19 +46,19 @@ public class CaseVO extends BaseVO<Long> implements Serializable {
      * 服务标签
      */
     @ApiModelProperty("服务标签")
-    private Integer serverTag;
+    private Long serverTag;
 
     /**
      * 行业标签
      */
     @ApiModelProperty("行业标签")
-    private Integer professionTag;
+    private Long professionTag;
 
     /**
-     * 类型 网站建设、广告运营、小程序APP
+     * 类型 1、网站建设 2、广告运营 3、小程序APP
      */
-    @ApiModelProperty("类型 网站建设、广告运营、小程序APP")
-    private String type;
+    @ApiModelProperty("类型 1、网站建设 2、广告运营 3、小程序APP")
+    private Integer type;
 
     /**
      * 案例正文
@@ -69,12 +70,13 @@ public class CaseVO extends BaseVO<Long> implements Serializable {
      * 题图（文件id）
      */
     @ApiModelProperty("题图（文件id）")
-    private Integer caseImage;
+    private Long caseImage;
 
     /**
      * 时间
      */
     @ApiModelProperty("时间")
+    @JsonFormat(pattern = DateConstants.YY_MM_DD_HH_MM_SS)
     private Date time;
 }
 

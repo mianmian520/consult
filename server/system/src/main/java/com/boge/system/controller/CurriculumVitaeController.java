@@ -4,15 +4,14 @@ import com.boge.core.common.base.controller.BaseController;
 import com.boge.core.common.base.service.BaseService;
 import com.boge.system.bean.dto.CurriculumVitaeDTO;
 import com.boge.system.bean.vo.CurriculumVitaeVO;
+import com.boge.system.dao.CurriculumVitaeDao;
 import com.boge.system.entity.CurriculumVitaeEntity;
 import com.boge.system.service.CurriculumVitaeService;
-import com.boge.system.dao.CurriculumVitaeDao;
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-
-import io.swagger.annotations.Api;
 
 /**
  * 简历表(CurriculumVitae)表控制层

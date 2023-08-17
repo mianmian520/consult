@@ -4,15 +4,14 @@ import com.boge.core.common.base.controller.BaseController;
 import com.boge.core.common.base.service.BaseService;
 import com.boge.system.bean.dto.SubscribeDTO;
 import com.boge.system.bean.vo.SubscribeVO;
+import com.boge.system.dao.SubscribeDao;
 import com.boge.system.entity.SubscribeEntity;
 import com.boge.system.service.SubscribeService;
-import com.boge.system.dao.SubscribeDao;
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-
-import io.swagger.annotations.Api;
 
 /**
  * 预约表(Subscribe)表控制层

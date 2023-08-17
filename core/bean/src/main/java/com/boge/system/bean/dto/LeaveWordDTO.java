@@ -1,13 +1,10 @@
 package com.boge.system.bean.dto;
 
 import com.boge.core.common.base.model.BaseDTO;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
-import java.util.Date;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 
@@ -47,12 +44,7 @@ public class LeaveWordDTO extends BaseDTO<Long> implements Serializable {
      * 网址
      */
     @ApiModelProperty("网址")
-    private String wesite;
+    private String website;
 
-    /**
-     * 留言时间
-     */
-    @ApiModelProperty("留言时间")
-    private Date time;
 }
 

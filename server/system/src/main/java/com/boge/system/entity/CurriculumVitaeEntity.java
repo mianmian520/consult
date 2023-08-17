@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
-
 import java.util.Date;
 
 /**
@@ -24,7 +23,7 @@ public class CurriculumVitaeEntity extends BaseEntity<Long> implements Serializa
     /**
      * 职位id
      */
-    private Integer positionId;
+    private Long positionId;
     /**
      * 姓名
      */

@@ -3,16 +3,13 @@ package com.boge.system.bean.dto;
 import com.boge.core.common.annotation.mybatis.MySort;
 import com.boge.core.common.base.model.BaseDTO;
 import com.boge.core.common.model.Validator;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.util.Date;
-
 import java.io.Serializable;
 
 /**
@@ -41,7 +38,7 @@ public class CaseDTO extends BaseDTO<Long> implements Serializable {
      */
     @ApiModelProperty("公司logo（文件id）")
     @NotNull(message = "公司logo不能为空", groups = {Validator.Create.class})
-    private Integer logo;
+    private Long logo;
 
     /**
      * 公司网址
@@ -55,21 +52,21 @@ public class CaseDTO extends BaseDTO<Long> implements Serializable {
      */
     @ApiModelProperty("服务标签")
     @NotNull(message = "服务标签不能为空", groups = {Validator.Create.class})
-    private Integer serverTag;
+    private Long serverTag;
 
     /**
      * 行业标签
      */
     @ApiModelProperty("行业标签")
     @NotNull(message = "行业标签不能为空", groups = {Validator.Create.class})
-    private Integer professionTag;
+    private Long professionTag;
 
     /**
-     * 类型 网站建设、广告运营、小程序APP
+     * 类型 1、网站建设 2、广告运营 3、小程序APP
      */
-    @ApiModelProperty("类型 网站建设、广告运营、小程序APP")
-    @NotBlank(message = "类型不能为空", groups = {Validator.Create.class})
-    private String type;
+    @ApiModelProperty("类型 1、网站建设 2、广告运营 3、小程序APP")
+    @NotNull(message = "类型不能为空", groups = {Validator.Create.class})
+    private Integer type;
 
     /**
      * 案例正文
@@ -83,6 +80,6 @@ public class CaseDTO extends BaseDTO<Long> implements Serializable {
      */
     @ApiModelProperty("题图（文件id）")
     @NotNull(message = "题图不能为空", groups = {Validator.Create.class})
-    private Integer caseImage;
+    private Long caseImage;
 }
 

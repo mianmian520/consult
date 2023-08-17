@@ -1,14 +1,15 @@
 package com.boge.system.bean.vo;
 
 import com.boge.core.common.base.model.BaseVO;
+import com.boge.core.common.consts.DateConstants;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-
-import java.util.Date;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * 简历表(CurriculumVitae)实体类
@@ -28,7 +29,7 @@ public class CurriculumVitaeVO extends BaseVO<Long> implements Serializable {
      * 职位id
      */
     @ApiModelProperty("职位id")
-    private Integer positionId;
+    private Long positionId;
 
     /**
      * 姓名
@@ -58,6 +59,7 @@ public class CurriculumVitaeVO extends BaseVO<Long> implements Serializable {
      * 时间
      */
     @ApiModelProperty("时间")
+    @JsonFormat(pattern = DateConstants.YY_MM_DD_HH_MM_SS)
     private Date time;
 }
 

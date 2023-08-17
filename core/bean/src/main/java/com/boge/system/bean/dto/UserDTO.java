@@ -4,7 +4,6 @@ import com.boge.core.common.base.model.BaseDTO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-
 import java.io.Serializable;
 
 /**

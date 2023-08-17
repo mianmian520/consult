@@ -1,10 +1,10 @@
 package com.boge.system.service;
 
 import com.boge.core.common.base.service.BaseService;
-import com.boge.system.entity.CaseEntity;
-import com.boge.system.dao.CaseDao;
 import com.boge.system.bean.dto.CaseDTO;
 import com.boge.system.bean.vo.CaseVO;
+import com.boge.system.dao.CaseDao;
+import com.boge.system.entity.CaseEntity;
 
 /**
  * 案例表(Case)表服务接口
