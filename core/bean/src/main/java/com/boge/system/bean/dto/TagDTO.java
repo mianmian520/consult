@@ -42,11 +42,5 @@ public class TagDTO extends BaseDTO<Long> implements Serializable {
     @MyQuery
     @NotNull(message = "标签类型不能为空")
     private Integer type;
-
-    /**
-     * 排序
-     */
-    @ApiModelProperty("排序")
-    private Integer sort;
 }
 

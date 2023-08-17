@@ -56,7 +56,7 @@ public interface BaseService<T, DTO extends BaseDTO<T>, VO extends BaseVO<T>, En
      * @param id id
      * @return 是否成功
      */
-    boolean delete(T id);
+    boolean delete(T id) throws CustomException;
 
     /**
      * 字段是否重复

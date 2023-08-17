@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
 
@@ -29,16 +28,24 @@ public class FileServiceImpl extends ServiceImpl<FileDao, FileEntity> implements
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public FileEntity upload(MultipartFile file) {
+    public FileEntity upload(Long id, MultipartFile file) {
         FileEntity fileEntity = new FileEntity();
         String uuid = UUID.fastUUID().toString().replace("-", "");
         String fileType = Objects.requireNonNull(file.getOriginalFilename()).substring(file.getOriginalFilename().lastIndexOf("."), file.getOriginalFilename().length());
         fileEntity.setFileName(uuid + fileType);
         fileEntity.setOriginName(file.getOriginalFilename());
         fileEntity.setFilePath(uploadPath + "/" + uuid + fileType);
-        save(fileEntity);
+        FileEntity old = null;
+        if (id != null) {
+            old = getById(id);
+            fileEntity.setId(id);
+        }
+        saveOrUpdate(fileEntity);
         try {
             FileUtil.writeFromStream(file.getInputStream(), fileEntity.getFilePath());
+            if (old != null) {
+                FileUtil.del(old.getFilePath());
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

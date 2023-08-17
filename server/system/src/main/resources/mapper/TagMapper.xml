@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boge.system.dao.TagDao">
+
+    <resultMap id="BaseResultMap" type="com.boge.system.entity.TagEntity">
+        <!--@Table sys_tag-->
+        <result property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="type" column="type"/>
+        <result property="sort" column="sort"/>
+    </resultMap>
+    <select id="maxTag" resultType="java.lang.Integer">
+        select max(sort) from sys_tag where type = #{type}
+    </select>
+
+    <select id="nextTag" resultType="com.boge.system.entity.TagEntity">
+        select id, min(sort) sort from sys_tag where type = #{type} and sort > #{sort}
+    </select>
+
+    <select id="prevTag" resultType="com.boge.system.entity.TagEntity">
+        select id, max(sort) sort from sys_tag where type = #{type} and sort &lt; #{sort}
+    </select>
+
+</mapper>
+

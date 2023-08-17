@@ -77,7 +77,7 @@ public abstract class BaseController<T, DTO extends BaseDTO<T>, VO extends BaseV
      */
     @ApiOperation("根据id删除")
     @DeleteMapping("/delete/{id}")
-    public Result<Boolean> delete(@PathVariable("id") T id) {
+    public Result<Boolean> delete(@PathVariable("id") T id) throws CustomException {
         return Result.success("删除成功", getService().delete(id));
     }
 

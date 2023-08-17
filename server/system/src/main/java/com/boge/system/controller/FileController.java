@@ -7,9 +7,7 @@ import com.boge.core.common.exception.CustomException;
 import com.boge.core.common.response.Result;
 import com.boge.system.entity.FileEntity;
 import com.boge.system.service.FileService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -43,9 +41,13 @@ public class FileController {
      * @return 文件信息
      */
     @ApiOperation("文件上传")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "文件id,修改时使用"),
+            @ApiImplicitParam(name = "file", value = "文件", required = true)
+    })
     @PostMapping("/upload")
-    public Result<FileEntity> upload(@ApiParam(value = "文件", required = true) MultipartFile file) {
-        return Result.success(fileService.upload(file));
+    public Result<FileEntity> upload(Long id, MultipartFile file) {
+        return Result.success(fileService.upload(id, file));
     }
 
     /**

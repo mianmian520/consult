@@ -166,7 +166,7 @@ public class BaseServiceImpl<T, DTO extends BaseDTO<T>, VO extends BaseVO<T>, En
     }
 
     @Override
-    public boolean delete(T id) {
+    public boolean delete(T id) throws CustomException {
         if (id instanceof Long ) {
             return removeById((Long) id);
         } else if (id instanceof Integer) {

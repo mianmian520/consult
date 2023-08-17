@@ -30,7 +30,7 @@ public class FileEntity implements Serializable{
      */
     @ApiModelProperty("文件id")
     @TableId(type = IdType.AUTO)
-    private Integer id;
+    private Long id;
 
     /**
      * 文件名称

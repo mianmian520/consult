@@ -14,9 +14,11 @@ public interface FileService extends IService<FileEntity> {
 
     /**
      * 文件上传
+     *
+     * @param id
      * @param file 文件
      * @return 文件信息
      */
-    FileEntity upload(MultipartFile file);
+    FileEntity upload(Long id, MultipartFile file);
 }
 
