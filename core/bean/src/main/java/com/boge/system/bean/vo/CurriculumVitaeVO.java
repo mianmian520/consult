@@ -61,5 +61,11 @@ public class CurriculumVitaeVO extends BaseVO<Long> implements Serializable {
     @ApiModelProperty("时间")
     @JsonFormat(pattern = DateConstants.YY_MM_DD_HH_MM_SS)
     private Date time;
+
+    /**
+     * 简历文件id
+     */
+    @ApiModelProperty("简历文件id")
+    private Long attachmentId;
 }
 

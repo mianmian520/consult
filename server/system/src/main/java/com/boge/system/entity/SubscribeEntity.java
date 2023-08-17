@@ -39,7 +39,7 @@ public class SubscribeEntity extends BaseEntity<Long> implements Serializable {
     /**
      * 联系
      */
-    private String telephone;
+    private String phone;
     /**
      * 邮件
      */

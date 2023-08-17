@@ -1,11 +1,14 @@
 package com.boge.system.bean.dto;
 
+import com.boge.core.common.annotation.mybatis.MySort;
 import com.boge.core.common.base.model.BaseDTO;
+import com.boge.core.common.model.Validator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 /**
@@ -16,6 +19,7 @@ import java.io.Serializable;
  */
 @Data
 @ApiModel("留言表")
+@MySort(fields = {"time"}, methods = {2})
 @EqualsAndHashCode(callSuper = true)
 public class LeaveWordDTO extends BaseDTO<Long> implements Serializable {
 
@@ -26,12 +30,14 @@ public class LeaveWordDTO extends BaseDTO<Long> implements Serializable {
      * 称呼
      */
     @ApiModelProperty("称呼")
+    @NotBlank(message = "称呼不能为空", groups = {Validator.Create.class})
     private String name;
 
     /**
      * 手机号
      */
     @ApiModelProperty("手机号")
+    @NotBlank(message = "手机号不能为空", groups = {Validator.Create.class})
     private String phone;
 
     /**

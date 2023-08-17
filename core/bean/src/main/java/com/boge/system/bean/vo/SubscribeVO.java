@@ -53,7 +53,7 @@ public class SubscribeVO extends BaseVO<Long> implements Serializable {
      * 联系
      */
     @ApiModelProperty("联系")
-    private String telephone;
+    private String phone;
 
     /**
      * 邮件

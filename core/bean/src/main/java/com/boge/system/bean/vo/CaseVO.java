@@ -43,16 +43,28 @@ public class CaseVO extends BaseVO<Long> implements Serializable {
     private String website;
 
     /**
-     * 服务标签
+     * 服务标签id
      */
-    @ApiModelProperty("服务标签")
+    @ApiModelProperty("服务标签id")
     private Long serverTag;
 
     /**
-     * 行业标签
+     * 服务标签标题
      */
-    @ApiModelProperty("行业标签")
+    @ApiModelProperty("服务标签标题")
+    private String serverTagTitle;
+
+    /**
+     * 行业标签id
+     */
+    @ApiModelProperty("行业标签id")
     private Long professionTag;
+
+    /**
+     * 行业标签标题
+     */
+    @ApiModelProperty("行业标签标题")
+    private String professionTagTitle;
 
     /**
      * 类型 1、网站建设 2、广告运营 3、小程序APP
@@ -78,5 +90,15 @@ public class CaseVO extends BaseVO<Long> implements Serializable {
     @ApiModelProperty("时间")
     @JsonFormat(pattern = DateConstants.YY_MM_DD_HH_MM_SS)
     private Date time;
+
+    @ApiModelProperty("公司logo URL")
+    public String getLogoUrl() {
+        return "/file/download/" + this.logo;
+    }
+
+    @ApiModelProperty("题图 URL")
+    public String getCaseImageUrl() {
+        return "/file/download/" + this.caseImage;
+    }
 }
 

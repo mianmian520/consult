@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
+import java.util.Date;
 
 
 /**
@@ -20,17 +21,25 @@ import java.io.Serializable;
 public class PositionEntity extends BaseEntity<Long> implements Serializable {
 
     private static final long serialVersionUID = 148615065396858572L;
+
     /**
      * 职位标题
      */
     private String title;
+
     /**
      * 职位职责
      */
     private String duty;
+
     /**
      * 职位要求
      */
     private String demand;
+
+    /**
+     * 发布时间
+     */
+    private Date time;
 }
 

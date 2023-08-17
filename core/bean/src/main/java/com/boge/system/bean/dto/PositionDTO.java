@@ -1,11 +1,15 @@
 package com.boge.system.bean.dto;
 
+import com.boge.core.common.annotation.mybatis.MyQuery;
+import com.boge.core.common.annotation.mybatis.MySort;
 import com.boge.core.common.base.model.BaseDTO;
+import com.boge.core.common.model.Validator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 /**
@@ -16,6 +20,7 @@ import java.io.Serializable;
  */
 @Data
 @ApiModel("职位表")
+@MySort(fields = {"time"}, methods = {2})
 @EqualsAndHashCode(callSuper = true)
 public class PositionDTO extends BaseDTO<Long> implements Serializable {
 
@@ -26,6 +31,8 @@ public class PositionDTO extends BaseDTO<Long> implements Serializable {
      * 职位标题
      */
     @ApiModelProperty("职位标题")
+    @NotBlank(message = "职位标题不能为空", groups = {Validator.Create.class})
+    @MyQuery(like = true)
     private String title;
 
     /**

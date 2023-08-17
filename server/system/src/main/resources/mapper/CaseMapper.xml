@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boge.system.dao.CaseDao">
+
+    <resultMap id="BaseResultMap" type="com.boge.system.entity.CaseEntity">
+        <!--@Table sys_case-->
+        <result property="id" column="id" />
+        <result property="title" column="title" />
+        <result property="logo" column="logo" />
+        <result property="website" column="website" />
+        <result property="serverTag" column="server_tag" />
+        <result property="professionTag" column="profession_tag" />
+        <result property="type" column="type" />
+        <result property="mainBody" column="main_body" />
+        <result property="caseImage" column="case_image" />
+        <result property="time" column="time" />
+    </resultMap>
+    <select id="queryPage" resultType="com.boge.system.bean.vo.CaseVO">
+        select *,
+               (select s.title from sys_tag s where s.id = t.server_tag) server_tag_title,
+               (select s1.title from sys_tag s1 where s1.id = t.profession_tag) profession_tag_title
+        from sys_case t
+        <where>
+            <if test="case.type != null">
+                and t.type = #{case.type}
+            </if>
+            <if test="case.title != null and case.title != ''">
+                and t.title like concat("%", concat(#{case.title}, "%"))
+            </if>
+        </where>
+    </select>
+
+</mapper>
+

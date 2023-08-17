@@ -1,12 +1,15 @@
 package com.boge.system.bean.vo;
 
 import com.boge.core.common.base.model.BaseVO;
+import com.boge.core.common.consts.DateConstants;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * 职位表(Position)实体类
@@ -39,5 +42,12 @@ public class PositionVO extends BaseVO<Long> implements Serializable {
      */
     @ApiModelProperty("职位要求")
     private String demand;
+
+    /**
+     * 发布时间
+     */
+    @ApiModelProperty("发布时间")
+    @JsonFormat(pattern = DateConstants.YY_MM_DD_HH_MM_SS)
+    private Date time;
 }
 

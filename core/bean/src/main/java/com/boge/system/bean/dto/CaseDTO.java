@@ -29,7 +29,7 @@ public class CaseDTO extends BaseDTO<Long> implements Serializable {
     /**
      * 案例标题
      */
-    @ApiModelProperty("案例标题")
+    @ApiModelProperty("案例标题 查询可用")
     @NotBlank(message = "案例标题不能为空", groups = {Validator.Create.class})
     private String title;
 
@@ -64,7 +64,7 @@ public class CaseDTO extends BaseDTO<Long> implements Serializable {
     /**
      * 类型 1、网站建设 2、广告运营 3、小程序APP
      */
-    @ApiModelProperty("类型 1、网站建设 2、广告运营 3、小程序APP")
+    @ApiModelProperty("类型 1、网站建设 2、广告运营 3、小程序APP 查询可用")
     @NotNull(message = "类型不能为空", groups = {Validator.Create.class})
     private Integer type;
 

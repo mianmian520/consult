@@ -1,11 +1,13 @@
 package com.boge.system.bean.dto;
 
 import com.boge.core.common.base.model.BaseDTO;
+import com.boge.core.common.model.Validator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 /**
@@ -26,6 +28,7 @@ public class SubscribeDTO extends BaseDTO<Long> implements Serializable {
      * 名称
      */
     @ApiModelProperty("名称")
+    @NotBlank(message = "名称不能为空", groups = {Validator.Create.class})
     private String name;
 
     /**
@@ -50,12 +53,14 @@ public class SubscribeDTO extends BaseDTO<Long> implements Serializable {
      * 联系
      */
     @ApiModelProperty("联系")
-    private String telephone;
+    @NotBlank(message = "联系不能为空", groups = {Validator.Create.class})
+    private String phone;
 
     /**
      * 邮件
      */
     @ApiModelProperty("邮件")
+    @NotBlank(message = "邮件不能为空", groups = {Validator.Create.class})
     private String email;
 }
 

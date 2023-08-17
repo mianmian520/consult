@@ -20,29 +20,40 @@ import java.util.Date;
 public class CurriculumVitaeEntity extends BaseEntity<Long> implements Serializable {
 
     private static final long serialVersionUID = 893800238768552887L;
+
     /**
      * 职位id
      */
     private Long positionId;
+
     /**
      * 姓名
      */
     private String name;
+
     /**
      * 性别
      */
     private String sex;
+
     /**
      * 手机号
      */
     private String phone;
+
     /**
      * 邮箱
      */
     private String email;
+
     /**
      * 时间
      */
     private Date time;
+
+    /**
+     * 简历文件id
+     */
+    private Long attachmentId;
 }
 

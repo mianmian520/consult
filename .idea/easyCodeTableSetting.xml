@@ -73,9 +73,9 @@
               </option>
               <option name="name" value="SysCase" />
               <option name="preName" value="" />
-              <option name="saveModelName" value="bean" />
-              <option name="savePackageName" value="com.boge.system.bean" />
-              <option name="savePath" value="./core/bean/src/main/java/com/boge/system/bean" />
+              <option name="saveModelName" value="system" />
+              <option name="savePackageName" value="com.boge.system" />
+              <option name="savePath" value="./server/system/src/main/java/com/boge/system" />
               <option name="templateGroupName" value="bgframeCopy" />
             </TableInfoDTO>
           </value>
