@@ -12,6 +12,8 @@ import com.boge.system.service.CaseService;
 import com.boge.system.service.TagService;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+
 /**
  * 案例表(Case)表服务实现类
  *
@@ -21,11 +23,8 @@ import org.springframework.stereotype.Service;
 @Service("caseService")
 public class CaseServiceImpl extends BaseServiceImpl<Long, CaseDTO, CaseVO, CaseEntity, CaseDao> implements CaseService {
 
-    private final TagService tagService;
-
-    public CaseServiceImpl(TagService tagService) {
-        this.tagService = tagService;
-    }
+    @Resource
+    private TagService tagService;
 
     @Override
     public PageBean<CaseVO> selectPage(CaseDTO dto) {

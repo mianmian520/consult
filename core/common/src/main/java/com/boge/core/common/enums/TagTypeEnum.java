@@ -1,10 +1,11 @@
 package com.boge.core.common.enums;
 
 /**
+ * 标签枚举
  * @Author boge
  * @Date 2023/8/17 12:45
  */
-public enum TagEnum {
+public enum TagTypeEnum {
     /**
      * 服务标签
      */
@@ -20,7 +21,7 @@ public enum TagEnum {
 
     private final int code;
 
-    TagEnum(int code) {
+    TagTypeEnum(int code) {
         this.code = code;
     }
 

@@ -2,6 +2,7 @@ package com.boge.system.bean.vo;
 
 import com.boge.core.common.base.model.BaseVO;
 import com.boge.core.common.consts.DateConstants;
+import com.boge.core.common.enums.CaseTypeEnum;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -77,6 +78,11 @@ public class CaseVO extends BaseVO<Long> implements Serializable {
      */
     @ApiModelProperty("类型 1、网站建设 2、广告运营 3、小程序APP")
     private Integer type;
+
+    @ApiModelProperty("类型名称")
+    public String getTypeName() {
+        return CaseTypeEnum.findTitle(this.type);
+    }
 
     /**
      * 案例正文

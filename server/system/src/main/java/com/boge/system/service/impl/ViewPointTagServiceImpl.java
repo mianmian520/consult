@@ -8,6 +8,8 @@ import com.boge.system.entity.ViewPointTagEntity;
 import com.boge.system.service.ViewPointTagService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * 观点-标签表(ViewPointTag)表服务实现类
  *
@@ -17,4 +19,8 @@ import org.springframework.stereotype.Service;
 @Service("viewPointTagService")
 public class ViewPointTagServiceImpl extends BaseServiceImpl<Long, ViewPointTagDTO, ViewPointTagVO, ViewPointTagEntity, ViewPointTagDao> implements ViewPointTagService {
 
+    @Override
+    public List<ViewPointTagVO> findByPointId(Long id) {
+        return baseMapper.findByPointId(id);
+    }
 }

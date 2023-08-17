@@ -2,6 +2,7 @@ package com.boge.system.bean.vo;
 
 import com.boge.core.common.base.model.BaseVO;
 import com.boge.core.common.consts.DateConstants;
+import com.boge.core.common.enums.ViewPointTypeEnum;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -10,6 +11,7 @@ import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 观点表(ViewPoint)实体类
@@ -61,6 +63,11 @@ public class ViewPointVO extends BaseVO<Long> implements Serializable {
     @ApiModelProperty("类型 1、增长观点 2、项目日记 3、公司动态 4、设计观点")
     private Integer type;
 
+    @ApiModelProperty("类型名称")
+    public String getTypeName() {
+        return ViewPointTypeEnum.findTitle(this.type);
+    }
+
     /**
      * 题图（文件id）
      */
@@ -79,5 +86,23 @@ public class ViewPointVO extends BaseVO<Long> implements Serializable {
     @ApiModelProperty("创建时间")
     @JsonFormat(pattern = DateConstants.YY_MM_DD_HH_MM_SS)
     private Date time;
+
+    @ApiModelProperty("观点人物标签集合")
+    private List<ViewPointTagVO> tags;
+
+    @ApiModelProperty("作者头像 URL")
+    public String getAuthorImageUrl() {
+        return "/file/download/" + this.authorImage;
+    }
+
+    @ApiModelProperty("观点任务头像 URL")
+    public String getPersonImageUrl() {
+        return "/file/download/" + this.personImage;
+    }
+
+    @ApiModelProperty("题图 URL")
+    public String getViewImageUrl() {
+        return "/file/download/" + this.viewImage;
+    }
 }
 

@@ -21,7 +21,6 @@ public class ViewPointTagVO extends BaseVO<Long> implements Serializable {
 
     private static final long serialVersionUID = 675151622000694812L;
 
-
     /**
      * 观点id
      */
@@ -33,5 +32,11 @@ public class ViewPointTagVO extends BaseVO<Long> implements Serializable {
      */
     @ApiModelProperty("标签id")
     private Long tagId;
+
+    /**
+     * 标签名标题
+     */
+    @ApiModelProperty("标签标题")
+    private String tagTitle;
 }
 

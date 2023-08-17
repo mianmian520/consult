@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.boge.core.common.base.model.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
@@ -15,6 +16,7 @@ import java.io.Serializable;
  * @since 2023-08-17 11:08:01
  */
 @Data
+@NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @TableName("sys_view_point_tag")
 public class ViewPointTagEntity extends BaseEntity<Long> implements Serializable {
@@ -28,5 +30,10 @@ public class ViewPointTagEntity extends BaseEntity<Long> implements Serializable
      * 标签id
      */
     private Long tagId;
+
+    public ViewPointTagEntity(Long pointId, Long tagId) {
+        this.pointId = pointId;
+        this.tagId = tagId;
+    }
 }
 

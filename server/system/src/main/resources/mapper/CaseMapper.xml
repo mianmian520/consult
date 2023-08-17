@@ -28,6 +28,7 @@
                 and t.title like concat("%", concat(#{case.title}, "%"))
             </if>
         </where>
+        order by time desc
     </select>
 
 </mapper>
