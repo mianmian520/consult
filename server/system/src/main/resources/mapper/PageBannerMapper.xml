@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boge.system.dao.PageBannerDao">
+
+    <resultMap id="BaseResultMap" type="com.boge.system.entity.PageBannerEntity">
+        <!--@Table sys_page_banner-->
+        <result property="id" column="id"/>
+        <result property="pageId" column="page_id"/>
+        <result property="title" column="title"/>
+        <result property="description" column="description"/>
+        <result property="sort" column="sort"/>
+    </resultMap>
+
+    <resultMap id="BannerMap" type="com.boge.system.bean.vo.PageBannerVO">
+        <result column="id" property="id" />
+        <result column="page_id" property="pageId" />
+        <result property="title" column="title"/>
+        <result property="description" column="description"/>
+        <result property="sort" column="banner_sort"/>
+        <collection property="bannerItems" ofType="com.boge.system.bean.vo.PageBannerItemVO" >
+            <result column="item_id" property="id" />
+            <result column="content_title" property="contentTitle" />
+            <result column="content_desc" property="contentDesc" />
+            <result column="focus_image" property="focusImage" />
+            <result column="init_image" property="initImage" />
+            <result column="connect_type" property="connectType" />
+            <result column="connect_id" property="connectId" />
+            <result column="item_sort" property="sort" />
+        </collection>
+    </resultMap>
+
+    <select id="findFirstByPageId" resultMap="BannerMap">
+        select t.*, t1.*, t1.id item_id, t.sort banner_sort, t1.sort item_sort from sys_page_banner t
+        left join sys_page_banner_item t1 on t.id = t1.banner_id
+        where t.page_id = #{pageId} and t.sort = 1
+        order by t1.sort asc
+    </select>
+
+    <select id="findSecondByPageId" resultMap="BannerMap">
+        select t.*, t1.*, t1.id item_id, t.sort banner_sort, t1.sort item_sort from sys_page_banner t
+        left join sys_page_banner_item t1 on t.id = t1.banner_id
+        where t.page_id = #{pageId} and t.sort > 1
+        order by t.sort asc, t1.sort asc
+    </select>
+    <select id="maxBanner" resultType="java.lang.Integer">
+        select max(sort) from sys_page_banner where page_id = #{pageId}
+    </select>
+
+</mapper>
+
