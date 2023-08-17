@@ -18,6 +18,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 页面(Page)表服务实现类
@@ -93,6 +95,63 @@ public class PageServiceImpl extends ServiceImpl<PageDao, PageEntity> implements
         pageBannerItemService.update(Wrappers.lambdaUpdate(PageBannerItemEntity.class).setSql("'sort' = 'sort' - 1")
                 .eq(PageBannerItemEntity::getBannerId, item.getBannerId()).gt(PageBannerItemEntity::getSort, item.getSort()));
         return true;
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void moveBanner(Long id, Integer move) throws CustomException {
+        PageBannerEntity banner = pageBannerService.getById(id);
+        if (banner.getSort() == 1) {
+            throw new CustomException("第一项轮播图位置不能移动");
+        }
+        Integer sort = banner.getSort();
+        List<PageBannerEntity> banners = new ArrayList<>(2);
+        if (move == null || move == 0) {
+            PageBannerEntity next = pageBannerService.nextBanner(banner.getPageId(), sort);
+            if (next == null) {
+                throw new CustomException(String.format("%s已在最下位置,不需要在往下移动", banner.getTitle()));
+            }
+            banner.setSort(next.getSort());
+            next.setSort(sort);
+            banners.add(next);
+        } else {
+            if (sort == 2) {
+                throw new CustomException(String.format("%s已在最上位置,不需要在往上移动", banner.getTitle()));
+            }
+            PageBannerEntity prev = pageBannerService.pervBanner(banner.getPageId(), sort);
+            banner.setSort(prev.getSort());
+            prev.setSort(sort);
+            banners.add(prev);
+        }
+        banners.add(banner);
+        pageBannerService.updateBatchById(banners);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void moveBannerItem(Long id, Integer move) throws CustomException {
+        PageBannerItemEntity item = pageBannerItemService.getById(id);
+        Integer sort = item.getSort();
+        List<PageBannerItemEntity> items = new ArrayList<>(2);
+        if (move == null || move == 0) {
+            PageBannerItemEntity next = pageBannerItemService.nextBannerItem(item.getBannerId(), sort);
+            if (next == null) {
+                throw new CustomException("已在最下位置,不需要在往下移动");
+            }
+            item.setSort(next.getSort());
+            next.setSort(sort);
+            items.add(next);
+        } else {
+            if (sort == 1) {
+                throw new CustomException("已在最上位置,不需要在往上移动");
+            }
+            PageBannerItemEntity prev = pageBannerItemService.pervBannerItem(item.getBannerId(), sort);
+            item.setSort(prev.getSort());
+            prev.setSort(sort);
+            items.add(prev);
+        }
+        items.add(item);
+        pageBannerItemService.updateBatchById(items);
     }
 
 }

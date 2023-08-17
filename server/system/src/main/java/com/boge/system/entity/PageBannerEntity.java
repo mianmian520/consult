@@ -23,7 +23,7 @@ public class PageBannerEntity extends BaseEntity<Long> implements Serializable {
     /**
      * 页面id
      */
-    private Integer pageId;
+    private Long pageId;
     /**
      * 栏目标题
      */

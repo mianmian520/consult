@@ -46,5 +46,13 @@
         select max(sort) from sys_page_banner where page_id = #{pageId}
     </select>
 
+    <select id="nextBanner" resultType="com.boge.system.entity.PageBannerEntity">
+        select id, min(sort) from sys_page_banner where page_id = #{pageId} and sort > #{sort}
+    </select>
+
+    <select id="pervBanner" resultType="com.boge.system.entity.PageBannerEntity">
+        select id, max(sort) from sys_page_banner where page_id = #{pageId} and sort &lt; #{sort}
+    </select>
+
 </mapper>
 

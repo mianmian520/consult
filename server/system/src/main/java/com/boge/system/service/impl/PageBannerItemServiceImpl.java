@@ -22,4 +22,14 @@ public class PageBannerItemServiceImpl extends BaseServiceImpl<Long, PageBannerI
         Integer maxItem = baseMapper.maxItem(bannerId);
         return maxItem == null ? 0 : maxItem;
     }
+
+    @Override
+    public PageBannerItemEntity nextBannerItem(Long bannerId, Integer sort) {
+        return baseMapper.nextBannerItem(bannerId, sort);
+    }
+
+    @Override
+    public PageBannerItemEntity pervBannerItem(Long bannerId, Integer sort) {
+        return baseMapper.pervBannerItem(bannerId, sort);
+    }
 }

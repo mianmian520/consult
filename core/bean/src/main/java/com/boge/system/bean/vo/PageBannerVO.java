@@ -27,7 +27,7 @@ public class PageBannerVO extends BaseVO<Long> implements Serializable {
      * 页面id
      */
     @ApiModelProperty("页面id")
-    private Integer pageId;
+    private Long pageId;
 
     /**
      * 栏目标题

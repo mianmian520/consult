@@ -33,4 +33,13 @@ public class PageBannerServiceImpl extends BaseServiceImpl<Long, PageBannerDTO, 
     public int maxBanner(Long pageId) {
         return baseMapper.maxBanner(pageId);
     }
+
+    @Override
+    public PageBannerEntity nextBanner(Long pageId, Integer sort) {
+        return baseMapper.nextBanner(pageId, sort);
+    }
+    @Override
+    public PageBannerEntity pervBanner(Long pageId, Integer sort) {
+        return baseMapper.pervBanner(pageId, sort);
+    }
 }

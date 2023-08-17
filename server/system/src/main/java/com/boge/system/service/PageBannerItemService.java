@@ -20,4 +20,20 @@ public interface PageBannerItemService extends BaseService<Long, PageBannerItemD
      * @return  最大sort
      */
     int maxItem(Long bannerId);
+
+    /**
+     * 获取下一个栏目项
+     * @param bannerId    栏目id
+     * @param sort      位置
+     * @return  下一栏目项
+     */
+    PageBannerItemEntity nextBannerItem(Long bannerId, Integer sort);
+
+    /**
+     * 获取上一个栏目项
+     * @param bannerId    栏目id
+     * @param sort      位置
+     * @return  上一栏目项
+     */
+    PageBannerItemEntity pervBannerItem(Long bannerId, Integer sort);
 }

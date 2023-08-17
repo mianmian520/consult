@@ -6,11 +6,8 @@ import com.boge.system.bean.dto.PageBannerDTO;
 import com.boge.system.bean.dto.PageBannerItemDTO;
 import com.boge.system.bean.vo.PageVO;
 import com.boge.system.entity.PageEntity;
-import com.boge.system.service.PageBannerItemService;
 import com.boge.system.service.PageService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.*;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -117,5 +114,39 @@ public class PageController {
         return Result.success("删除成功", pageService.deleteBannerItem(itemId));
     }
 
+    /**
+     * 移动栏目位置
+     * @param id 栏目id
+     * @param move 上移下移 0、下移 1、上移，为空下移
+     * @return 是否成功
+     * @throws CustomException 异常
+     */
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "栏目id", required = true, dataTypeClass = Long.class),
+            @ApiImplicitParam(name = "move", value = "上移下移 0、下移 1、上移，为空下移", dataTypeClass = Integer.class)
+    })
+    @ApiOperation("栏目移动位置，上移下移")
+    @PutMapping("/move/banner/{id}")
+    public Result<Object> moveBanner(@PathVariable("id") Long id, Integer move) throws CustomException {
+        pageService.moveBanner(id, move);
+        return Result.success("移动成功", null);
+    }
 
+    /**
+     * 移动栏目项位置
+     * @param id 栏目项id
+     * @param move 上移下移 0、下移 1、上移，为空下移
+     * @return 是否成功
+     * @throws CustomException 异常
+     */
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "栏目项id", required = true),
+            @ApiImplicitParam(name = "move", value = "上移下移 0、下移 1、上移，为空下移")
+    })
+    @ApiOperation("栏目想移动位置，上移下移")
+    @PutMapping("/move/banner/item/{id}")
+    public Result<Object> moveBannerItem(@PathVariable("id") Long id, Integer move) throws CustomException {
+        pageService.moveBannerItem(id, move);
+        return Result.success("移动成功", null);
+    }
 }

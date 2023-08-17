@@ -36,4 +36,22 @@ public interface PageBannerService extends BaseService<Long, PageBannerDTO, Page
      * @return  最大sort值
      */
     int maxBanner(Long pageId);
+
+    /**
+     * 获取下一个栏目
+     * @param pageId    页面id
+     * @param sort      位置
+     * @return  下一栏目
+     */
+    PageBannerEntity nextBanner(Long pageId, Integer sort);
+
+    /**
+     * 获取上一个栏目
+     * @param pageId    页面id
+     * @param sort      位置
+     * @return  上一栏目
+     */
+    PageBannerEntity pervBanner(Long pageId, Integer sort);
+
+
 }

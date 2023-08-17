@@ -63,4 +63,20 @@ public interface PageService extends IService<PageEntity>{
      * @return          是否成功
      */
     Boolean deleteBannerItem(Long itemId);
+
+    /**
+     * 移动栏目位置
+     * @param id 栏目id
+     * @param move 上移下移 0、下移 1、上移，为空下移
+     * @throws CustomException 异常
+     */
+    void moveBanner(Long id, Integer move) throws CustomException;
+
+    /**
+     * 移动栏目项位置
+     * @param id 栏目项id
+     * @param move 上移下移 0、下移 1、上移，为空下移
+     * @throws CustomException 异常
+     */
+    void moveBannerItem(Long id, Integer move) throws CustomException;
 }
