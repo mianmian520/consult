@@ -1,5 +1,7 @@
 package com.boge.system.bean.dto;
 
+import com.boge.core.common.annotation.mybatis.MyQuery;
+import com.boge.core.common.annotation.mybatis.MySort;
 import com.boge.core.common.base.model.BaseDTO;
 import com.boge.core.common.model.Validator;
 import io.swagger.annotations.ApiModel;
@@ -21,6 +23,7 @@ import java.util.List;
  */
 @Data
 @ApiModel("观点表")
+@MySort(fields = {"time"}, methods = {2})
 @EqualsAndHashCode(callSuper = true)
 public class ViewPointDTO extends BaseDTO<Long> implements Serializable {
 
@@ -30,6 +33,7 @@ public class ViewPointDTO extends BaseDTO<Long> implements Serializable {
      * 观点标题
      */
     @ApiModelProperty("观点标题")
+    @MyQuery(like = true)
     @NotBlank(message = "观点标题不能为空", groups = {Validator.Create.class})
     private String title;
 
@@ -65,6 +69,7 @@ public class ViewPointDTO extends BaseDTO<Long> implements Serializable {
      * 类型 1、增长观点 2、项目日记 3、公司动态 4、设计观点
      */
     @ApiModelProperty("类型 1、增长观点 2、项目日记 3、公司动态 4、设计观点")
+    @MyQuery
     @NotNull(message = "类型不能为空", groups = {Validator.Create.class})
     private Integer type;
 

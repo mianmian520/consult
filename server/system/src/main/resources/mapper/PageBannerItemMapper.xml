@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boge.system.dao.PageBannerItemDao">
+
+    <select id="maxItem" resultType="java.lang.Integer">
+        select max(sort) from sys_page_banner_item where banner_id = #{bannerId}
+    </select>
+    <select id="nextBannerItem" resultType="com.boge.system.entity.PageBannerItemEntity">
+        select id, min(sort) from sys_page_banner_item where banner_id = #{bannerId} and sort > #{sort}
+    </select>
+    <select id="pervBannerItem" resultType="com.boge.system.entity.PageBannerItemEntity">
+        select id, max(sort) from sys_page_banner_item where banner_id = #{bannerId} and sort &lt; #{sort}
+    </select>
+
+</mapper>
+
