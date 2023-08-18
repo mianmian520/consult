@@ -30,6 +30,11 @@ public class CurriculumVitaeVO extends BaseVO<Long> implements Serializable {
      */
     @ApiModelProperty("职位id")
     private Long positionId;
+    /**
+     * 职位标题
+     */
+    @ApiModelProperty("职位Title")
+    private String positionTitle;
 
     /**
      * 姓名
@@ -67,5 +72,15 @@ public class CurriculumVitaeVO extends BaseVO<Long> implements Serializable {
      */
     @ApiModelProperty("简历文件id")
     private Long attachmentId;
+    /**
+     * 简历文件名称
+     */
+    @ApiModelProperty("简历文件名称")
+    private String originName;
+
+    @ApiModelProperty("简历文件 URL")
+    public String getAttachmentUrl() {
+        return "/file/download/" + this.attachmentId;
+    }
 }
 

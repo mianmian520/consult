@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boge.system.dao.CurriculumVitaeDao">
+
+    <resultMap id="BaseResultMap" type="com.boge.system.entity.CurriculumVitaeEntity">
+        <!--@Table sys_case-->
+        <result property="id" column="id" />
+        <result property="positionId" column="position_id" />
+        <result property="name" column="name" />
+        <result property="sex" column="sex" />
+        <result property="phone" column="phone" />
+        <result property="email" column="email" />
+        <result property="time" column="time" />
+        <result property="attachmentId" column="attachment_id" />
+    </resultMap>
+    <select id="queryPage" resultType="com.boge.system.bean.vo.CurriculumVitaeVO">
+        SELECT a.id,a.position_id,a.name,a.sex,a.phone,a.email,b.title as position_title,a.time,a.attachment_id,c.origin_name
+        FROM sys_curriculum_vitae a
+        left join sys_position b on a.position_id = b.id
+        left join sys_file c on a.attachment_id = c.id
+        <where>
+            <if test="curriculumVitae.sex != null and curriculumVitae.sex != ''"  >
+                and a.sex = #{curriculumVitae.sex}
+            </if>
+            <if test="curriculumVitae.name != null and curriculumVitae.name != ''">
+                and a.name like concat("%", concat(#{curriculumVitae.name}, "%"))
+            </if>
+            <if test="curriculumVitae.positionId != null and curriculumVitae.positionId != ''">
+                and a.position_id like concat("%", concat(#{curriculumVitae.positionId}, "%"))
+            </if>
+            <if test="curriculumVitae.positionTitle != null and curriculumVitae.positionTitle != ''">
+                and b.title like concat("%", concat(#{curriculumVitae.positionTitle}, "%"))
+            </if>
+        </where>
+        order by a.time desc
+    </select>
+
+</mapper>
+

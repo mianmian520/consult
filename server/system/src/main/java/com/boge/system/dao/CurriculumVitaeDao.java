@@ -1,7 +1,11 @@
 package com.boge.system.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.boge.system.bean.dto.CurriculumVitaeDTO;
+import com.boge.system.bean.vo.CurriculumVitaeVO;
 import com.boge.system.entity.CurriculumVitaeEntity;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -12,5 +16,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface CurriculumVitaeDao extends BaseMapper<CurriculumVitaeEntity> {
+
+    Page<CurriculumVitaeVO> queryPage(Page<Object> objectPage, @Param("curriculumVitae") CurriculumVitaeDTO dto);
 }
 

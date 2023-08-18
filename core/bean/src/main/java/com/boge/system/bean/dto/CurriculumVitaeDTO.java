@@ -31,7 +31,11 @@ public class CurriculumVitaeDTO extends BaseDTO<Long> implements Serializable {
      */
     @ApiModelProperty("职位id")
     private Long positionId;
-
+    /**
+     * 职位Title
+     */
+    @ApiModelProperty("职位Title")
+    private String positionTitle;
     /**
      * 姓名
      */
