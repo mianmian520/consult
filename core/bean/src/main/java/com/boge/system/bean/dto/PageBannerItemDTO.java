@@ -1,11 +1,10 @@
 package com.boge.system.bean.dto;
 
 import com.boge.core.common.base.model.BaseDTO;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -47,14 +46,12 @@ public class PageBannerItemDTO extends BaseDTO<Long> implements Serializable {
      * 初始效果图
      */
     @ApiModelProperty("初始效果图")
-    @NotNull(message = "初始效果图不能为空")
     private Long initImage;
 
     /**
      * 焦点效果图
      */
     @ApiModelProperty("焦点效果图")
-    @NotNull(message = "焦点效果图不能为空")
     private Long focusImage;
 
     /**
@@ -67,7 +64,6 @@ public class PageBannerItemDTO extends BaseDTO<Long> implements Serializable {
      * 连接内容id 根据类型来判断数据来源
      */
     @ApiModelProperty("连接内容id 根据类型来判断数据来源")
-    @NotNull(message = "连接内容id不能为空")
     private Long connectId;
 
     /**
@@ -75,5 +71,14 @@ public class PageBannerItemDTO extends BaseDTO<Long> implements Serializable {
      */
     @ApiModelProperty("顺序")
     private Integer sort;
+
+    @ApiModelProperty("预留字段1")
+    private String reserve1;
+
+    @ApiModelProperty("预留字段2")
+    private String reserve2;
+
+    @ApiModelProperty("连接内容路由")
+    private String connectPath;
 }
 

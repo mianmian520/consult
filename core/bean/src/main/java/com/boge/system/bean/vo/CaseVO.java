@@ -25,6 +25,7 @@ public class CaseVO extends BaseVO<Long> implements Serializable {
 
     private static final long serialVersionUID = -28483335881640153L;
 
+
     /**
      * 案例标题
      */
@@ -72,6 +73,12 @@ public class CaseVO extends BaseVO<Long> implements Serializable {
      */
     @ApiModelProperty("行业标签标题")
     private String professionTagTitle;
+
+    @ApiModelProperty("摘要")
+    private String digest;
+
+    @ApiModelProperty("推荐 0、不推荐 1、推荐")
+    private Integer recommend;
 
     /**
      * 类型 1、网站建设 2、广告运营 3、小程序APP

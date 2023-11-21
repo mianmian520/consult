@@ -24,6 +24,12 @@
             <if test="case.type != null">
                 and t.type = #{case.type}
             </if>
+            <if test="case.serverTag != null">
+                and t.server_tag = #{case.serverTag}
+            </if>
+            <if test="case.professionTag != null">
+                and t.profession_tag = #{case.professionTag}
+            </if>
             <if test="case.title != null and case.title != ''">
                 and t.title like concat("%", concat(#{case.title}, "%"))
             </if>
@@ -31,5 +37,12 @@
         order by time desc
     </select>
 
+    <select id="next" resultType="com.boge.system.entity.CaseEntity">
+        select * from sys_case where time &lt; (select t.time from sys_case t where t.id = #{id}) order by time desc limit 1;
+    </select>
+
+    <select id="prev" resultType="com.boge.system.entity.CaseEntity">
+        select * from sys_case where time > (select t.time from sys_case t where t.id = #{id}) order by time limit 1;
+    </select>
 </mapper>
 

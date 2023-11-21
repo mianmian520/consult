@@ -20,4 +20,4 @@ spring:
 
 system:
   upload:
-    path: E:/consult/upload/
+    path: /consult/upload

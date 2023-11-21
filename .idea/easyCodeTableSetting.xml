@@ -239,6 +239,40 @@
             </TableInfoDTO>
           </value>
         </entry>
+        <entry key="consult.sys_link">
+          <value>
+            <TableInfoDTO>
+              <option name="comment" value="友链管理" />
+              <option name="fullColumn">
+                <list>
+                  <ColumnInfoDTO>
+                    <option name="custom" value="false" />
+                    <option name="name" value="id" />
+                    <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="名称" />
+                    <option name="custom" value="false" />
+                    <option name="name" value="name" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="地址" />
+                    <option name="custom" value="false" />
+                    <option name="name" value="url" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                </list>
+              </option>
+              <option name="name" value="SysLink" />
+              <option name="preName" value="" />
+              <option name="saveModelName" value="system" />
+              <option name="savePackageName" value="com.boge.system" />
+              <option name="savePath" value="./server/system/src/main/java/com/boge/system" />
+              <option name="templateGroupName" value="bgframeCopy" />
+            </TableInfoDTO>
+          </value>
+        </entry>
         <entry key="consult.sys_message">
           <value>
             <TableInfoDTO>
@@ -319,18 +353,12 @@
                   <ColumnInfoDTO>
                     <option name="comment" value="主键" />
                     <option name="custom" value="false" />
-                    <option name="ext">
-                      <map />
-                    </option>
                     <option name="name" value="id" />
                     <option name="type" value="java.lang.Integer" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="页面标题" />
                     <option name="custom" value="false" />
-                    <option name="ext">
-                      <map />
-                    </option>
                     <option name="name" value="title" />
                     <option name="type" value="java.lang.String" />
                   </ColumnInfoDTO>
@@ -887,14 +915,34 @@
                     <option name="name" value="time" />
                     <option name="type" value="java.util.Date" />
                   </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="摘要" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+                    <option name="name" value="digest" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
                 </list>
               </option>
               <option name="name" value="SysViewPoint" />
               <option name="preName" value="" />
-              <option name="saveModelName" value="bean" />
-              <option name="savePackageName" value="com.boge.system.bean" />
-              <option name="savePath" value="./core/bean/src/main/java/com/boge/system/bean" />
-              <option name="templateGroupName" value="" />
+              <option name="saveModelName" value="system" />
+              <option name="savePackageName" value="com.boge.system" />
+              <option name="savePath" value="./server/system/src/main/java/com/boge/system" />
+              <option name="templateGroupName" value="bgframeCopy" />
             </TableInfoDTO>
           </value>
         </entry>

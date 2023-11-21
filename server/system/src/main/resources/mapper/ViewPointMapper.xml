@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boge.system.dao.ViewPointDao">
+
+    <select id="next" resultType="com.boge.system.entity.ViewPointEntity">
+        select * from sys_view_point where time &lt; (select t.time from sys_view_point t where t.id = #{id}) order by time desc limit 1;
+    </select>
+    <select id="prev" resultType="com.boge.system.entity.ViewPointEntity">
+        select * from sys_view_point where time > (select t.time from sys_view_point t where t.id = #{id}) order by time limit 1;
+    </select>
+
+</mapper>
+

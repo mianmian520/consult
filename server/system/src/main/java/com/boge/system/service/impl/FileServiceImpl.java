@@ -35,17 +35,12 @@ public class FileServiceImpl extends ServiceImpl<FileDao, FileEntity> implements
         fileEntity.setFileName(uuid + fileType);
         fileEntity.setOriginName(file.getOriginalFilename());
         fileEntity.setFilePath(uploadPath + "/" + uuid + fileType);
-        FileEntity old = null;
         if (id != null) {
-            old = getById(id);
             fileEntity.setId(id);
         }
         saveOrUpdate(fileEntity);
         try {
             FileUtil.writeFromStream(file.getInputStream(), fileEntity.getFilePath());
-            if (old != null) {
-                FileUtil.del(old.getFilePath());
-            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

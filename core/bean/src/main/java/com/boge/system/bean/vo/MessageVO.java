@@ -61,6 +61,9 @@ public class MessageVO extends BaseVO<Long> implements Serializable {
         return MessageTypeEnum.findTitle(this.type);
     }
 
+    @ApiModelProperty("推荐 0、不推荐 1、推荐")
+    private Integer recommend;
+
     /**
      * 题图（文件id）
      */

@@ -8,6 +8,8 @@ import com.boge.system.bean.vo.UserVO;
 import com.boge.system.dao.UserDao;
 import com.boge.system.entity.UserEntity;
 
+import java.util.Map;
+
 /**
  * 系统管理-人员表(User)表服务接口
  *
@@ -21,5 +23,5 @@ public interface UserService extends BaseService<Long, UserDTO, UserVO, UserEnti
      * @param dto 登录信息
      * @return  token
      */
-    String login(LoginDTO dto) throws CustomException;
+    Map<String, String> login(LoginDTO dto) throws CustomException;
 }

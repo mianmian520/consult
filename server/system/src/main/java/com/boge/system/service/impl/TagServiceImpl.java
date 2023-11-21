@@ -70,7 +70,7 @@ public class TagServiceImpl extends BaseServiceImpl<Long, TagDTO, TagVO, TagEnti
         Integer sort = tag.getSort();
         List<TagEntity> tags = new ArrayList<>();
         if (move == null || move == 0) {
-            TagEntity next = baseMapper.nextTag(tag.getType(), sort);
+            TagEntity next = baseMapper.nextTag(tag.getType(), sort + 1);
             if (next == null) {
                 throw new CustomException(String.format("%s已在最下位置,不需要在往下移动", tag.getTitle()));
             }
@@ -81,12 +81,45 @@ public class TagServiceImpl extends BaseServiceImpl<Long, TagDTO, TagVO, TagEnti
             if (sort == 1) {
                 throw new CustomException(String.format("%s已在最上位置,不需要在往上移动", tag.getTitle()));
             }
-            TagEntity prev = baseMapper.prevTag(tag.getType(), sort);
+            TagEntity prev = baseMapper.prevTag(tag.getType(), sort - 1);
             tag.setSort(prev.getSort());
             prev.setSort(sort);
             tags.add(prev);
         }
         tags.add(tag);
         updateBatchById(tags);
+    }
+
+    @Override
+    public List<TagVO> round(Long id, Integer type, Integer num) throws CustomException {
+        if (id == null && type == null) {
+            throw new CustomException("标签id或者标签类型不能都为空");
+        }
+        List<TagVO> tags = new ArrayList<>();
+        if (id == null) {
+            List<TagEntity> list = list(Wrappers.lambdaQuery(TagEntity.class).eq(TagEntity::getType, type).orderByAsc(TagEntity::getSort).last("limit " + ((num * 2) + 1)));
+            tags.addAll(BeanUtil.copyToList(list, TagVO.class));
+            return tags;
+        }
+        TagVO detail = detail(id);
+        if (detail.getSort() == 1) {
+            List<TagEntity> list = list(Wrappers.lambdaQuery(TagEntity.class).eq(TagEntity::getType, detail.getType()).gt(TagEntity::getSort, detail.getSort()).orderByAsc(TagEntity::getSort).last("limit " + (num * 2)));
+            tags.add(detail);
+            tags.addAll(BeanUtil.copyToList(list, TagVO.class));
+        } else {
+            TagEntity tag = baseMapper.nextTag(detail.getType(), detail.getSort());
+            if (tag == null) {
+                List<TagEntity> list = list(Wrappers.lambdaQuery(TagEntity.class).eq(TagEntity::getType, detail.getType()).lt(TagEntity::getSort, detail.getSort()).orderByDesc(TagEntity::getSort).last("limit " + (num * 2)));
+                tags.addAll(BeanUtil.copyToList(list, TagVO.class));
+                tags.add(detail);
+            } else {
+                List<TagEntity> prev = list(Wrappers.lambdaQuery(TagEntity.class).eq(TagEntity::getType, detail.getType()).lt(TagEntity::getSort, detail.getSort()).orderByAsc(TagEntity::getSort).last("limit " + num));
+                List<TagEntity> next = list(Wrappers.lambdaQuery(TagEntity.class).eq(TagEntity::getType, detail.getType()).gt(TagEntity::getSort, detail.getSort()).orderByDesc(TagEntity::getSort).last("limit " + num));
+                tags.addAll(BeanUtil.copyToList(prev, TagVO.class));
+                tags.add(detail);
+                tags.addAll(BeanUtil.copyToList(next, TagVO.class));
+            }
+        }
+        return tags;
     }
 }

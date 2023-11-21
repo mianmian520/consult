@@ -73,12 +73,22 @@ public class ViewPointDTO extends BaseDTO<Long> implements Serializable {
     @NotNull(message = "类型不能为空", groups = {Validator.Create.class})
     private Integer type;
 
+    @ApiModelProperty("推荐 0、不推荐 1、推荐")
+    @MyQuery
+    private Integer recommend;
+
     /**
      * 题图（文件id）
      */
     @ApiModelProperty("题图（文件id）")
     @NotNull(message = "题图不能为空", groups = {Validator.Create.class})
     private Long viewImage;
+
+    /**
+     * 摘要
+     */
+    @ApiModelProperty("摘要")
+    private String digest;
 
     /**
      * 正文

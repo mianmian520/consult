@@ -56,5 +56,14 @@ public class ViewPointEntity extends BaseEntity<Long> implements Serializable {
      * 创建时间
      */
     private Date time;
+    /**
+     * 摘要
+     */
+    private String digest;
+
+    /**
+     * 推荐 0、不推荐 1、推荐
+     */
+    private Integer recommend;
 }
 

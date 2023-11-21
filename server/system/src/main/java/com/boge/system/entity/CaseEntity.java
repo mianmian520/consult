@@ -2,6 +2,7 @@ package com.boge.system.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.boge.core.common.base.model.BaseEntity;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -60,5 +61,15 @@ public class CaseEntity extends BaseEntity<Long> implements Serializable {
      * 时间
      */
     private Date time;
+
+    /**
+     * 摘要
+     */
+    private String digest;
+
+    /**
+     * 推荐 0、不推荐 1、推荐
+     */
+    private Integer recommend;
 }
 

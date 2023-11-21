@@ -1,5 +1,6 @@
 package com.boge.system.bean.dto;
 
+import com.boge.core.common.annotation.mybatis.MyQuery;
 import com.boge.core.common.annotation.mybatis.MySort;
 import com.boge.core.common.base.model.BaseDTO;
 import com.boge.core.common.model.Validator;
@@ -73,6 +74,13 @@ public class CaseDTO extends BaseDTO<Long> implements Serializable {
     @ApiModelProperty("类型 1、网站建设 2、广告运营 3、小程序APP 查询可用")
     @NotNull(message = "类型不能为空", groups = {Validator.Create.class})
     private Integer type;
+
+    @ApiModelProperty("摘要")
+    private String digest;
+
+    @ApiModelProperty("推荐 0、不推荐 1、推荐")
+    @MyQuery
+    private Integer recommend;
 
     /**
      * 案例正文

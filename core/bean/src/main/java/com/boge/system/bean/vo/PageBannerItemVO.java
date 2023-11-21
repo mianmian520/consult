@@ -18,7 +18,7 @@ import java.io.Serializable;
 @Data
 @ApiModel("页面栏目配置表")
 @EqualsAndHashCode(callSuper = true)
-public class PageBannerItemVO extends BaseVO<Long> implements Serializable {
+public class    PageBannerItemVO extends BaseVO<Long> implements Serializable {
 
     private static final long serialVersionUID = -50713940711140608L;
 
@@ -54,9 +54,10 @@ public class PageBannerItemVO extends BaseVO<Long> implements Serializable {
     private Long focusImage;
 
     /**
-     * 连接类型 1、案例 2、观点 3、资讯 4、职位
+     *
+     * 连接类型 xx两位数 十位(1、案例 2、观点 3、资讯 4、职位) 个位(具体类型)
      */
-    @ApiModelProperty("连接类型 1、案例 2、观点 3、资讯 4、职位")
+    @ApiModelProperty("连接类型 xx两位数 十位(1、案例 2、观点 3、资讯 4、职位 5、首页) 个位(具体类型)")
     private Integer connectType;
 
     /**
@@ -65,15 +66,27 @@ public class PageBannerItemVO extends BaseVO<Long> implements Serializable {
     @ApiModelProperty("连接内容id 根据类型来判断数据来源")
     private Long connectId;
 
+    @ApiModelProperty("连接内容标题")
+    private String connectTitle;
+
+    @ApiModelProperty("连接内容路由")
+    private String connectPath;
+
     /**
      * 顺序
      */
     @ApiModelProperty("顺序")
     private Integer sort;
 
+    @ApiModelProperty("预留字段1")
+    private String reserve1;
+
+    @ApiModelProperty("预留字段2")
+    private String reserve2;
+
 
     @ApiModelProperty("初始效果图 URL")
-    public String getInitFileUrl() {
+    public String getInitImageUrl() {
         return "/file/download/" + this.initImage;
     }
 

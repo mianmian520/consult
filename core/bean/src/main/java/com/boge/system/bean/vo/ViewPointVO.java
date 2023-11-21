@@ -12,6 +12,7 @@ import lombok.EqualsAndHashCode;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 观点表(ViewPoint)实体类
@@ -56,6 +57,15 @@ public class ViewPointVO extends BaseVO<Long> implements Serializable {
      */
     @ApiModelProperty("观点人物头像（文件id）")
     private Long personImage;
+
+    /**
+     * 摘要
+     */
+    @ApiModelProperty("摘要")
+    private String digest;
+
+    @ApiModelProperty("推荐 0、不推荐 1、推荐")
+    private Integer recommend;
 
     /**
      * 类型 1、增长观点 2、项目日记 3、公司动态 4、设计观点
@@ -103,6 +113,13 @@ public class ViewPointVO extends BaseVO<Long> implements Serializable {
     @ApiModelProperty("题图 URL")
     public String getViewImageUrl() {
         return "/file/download/" + this.viewImage;
+    }
+
+    public String getTagTitles() {
+        if (tags != null && !tags.isEmpty()) {
+            return tags.stream().map(ViewPointTagVO::getTagTitle).collect(Collectors.joining(","));
+        }
+        return "";
     }
 }
 

@@ -81,7 +81,7 @@ public class PageServiceImpl extends ServiceImpl<PageDao, PageEntity> implements
             throw new CustomException("第一项轮播图不能删除");
         }
         pageBannerService.removeById(bannerId);
-        pageBannerService.update(Wrappers.lambdaUpdate(PageBannerEntity.class).setSql("'sort' = 'sort' - 1")
+        pageBannerService.update(Wrappers.lambdaUpdate(PageBannerEntity.class).setSql("sort = sort - 1")
                 .eq(PageBannerEntity::getPageId, banner.getPageId()).gt(PageBannerEntity::getSort, banner.getSort()));
         pageBannerItemService.remove(Wrappers.lambdaQuery(PageBannerItemEntity.class).eq(PageBannerItemEntity::getBannerId, bannerId));
         return true;
@@ -92,7 +92,7 @@ public class PageServiceImpl extends ServiceImpl<PageDao, PageEntity> implements
     public Boolean deleteBannerItem(Long itemId) {
         PageBannerItemEntity item = pageBannerItemService.getById(itemId);
         pageBannerItemService.removeById(itemId);
-        pageBannerItemService.update(Wrappers.lambdaUpdate(PageBannerItemEntity.class).setSql("'sort' = 'sort' - 1")
+        pageBannerItemService.update(Wrappers.lambdaUpdate(PageBannerItemEntity.class).setSql("sort = sort - 1")
                 .eq(PageBannerItemEntity::getBannerId, item.getBannerId()).gt(PageBannerItemEntity::getSort, item.getSort()));
         return true;
     }
@@ -107,7 +107,7 @@ public class PageServiceImpl extends ServiceImpl<PageDao, PageEntity> implements
         Integer sort = banner.getSort();
         List<PageBannerEntity> banners = new ArrayList<>(2);
         if (move == null || move == 0) {
-            PageBannerEntity next = pageBannerService.nextBanner(banner.getPageId(), sort);
+            PageBannerEntity next = pageBannerService.nextBanner(banner.getPageId(), sort + 1);
             if (next == null) {
                 throw new CustomException(String.format("%s已在最下位置,不需要在往下移动", banner.getTitle()));
             }
@@ -118,7 +118,7 @@ public class PageServiceImpl extends ServiceImpl<PageDao, PageEntity> implements
             if (sort == 2) {
                 throw new CustomException(String.format("%s已在最上位置,不需要在往上移动", banner.getTitle()));
             }
-            PageBannerEntity prev = pageBannerService.pervBanner(banner.getPageId(), sort);
+            PageBannerEntity prev = pageBannerService.pervBanner(banner.getPageId(), sort - 1);
             banner.setSort(prev.getSort());
             prev.setSort(sort);
             banners.add(prev);
@@ -134,7 +134,7 @@ public class PageServiceImpl extends ServiceImpl<PageDao, PageEntity> implements
         Integer sort = item.getSort();
         List<PageBannerItemEntity> items = new ArrayList<>(2);
         if (move == null || move == 0) {
-            PageBannerItemEntity next = pageBannerItemService.nextBannerItem(item.getBannerId(), sort);
+            PageBannerItemEntity next = pageBannerItemService.nextBannerItem(item.getBannerId(), sort + 1);
             if (next == null) {
                 throw new CustomException("已在最下位置,不需要在往下移动");
             }
@@ -145,7 +145,7 @@ public class PageServiceImpl extends ServiceImpl<PageDao, PageEntity> implements
             if (sort == 1) {
                 throw new CustomException("已在最上位置,不需要在往上移动");
             }
-            PageBannerItemEntity prev = pageBannerItemService.pervBannerItem(item.getBannerId(), sort);
+            PageBannerItemEntity prev = pageBannerItemService.pervBannerItem(item.getBannerId(), sort - 1);
             item.setSort(prev.getSort());
             prev.setSort(sort);
             items.add(prev);

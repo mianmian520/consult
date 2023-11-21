@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 /**
  * 登录控制器
@@ -30,7 +31,7 @@ public class LoginController {
      */
     @ApiOperation("登录")
     @PostMapping("/login")
-    public Result<String> login(@RequestBody LoginDTO dto) throws CustomException {
+    public Result<Map<String, String>> login(@RequestBody LoginDTO dto) throws CustomException {
         return Result.success("登录成功", userService.login(dto));
     }
 

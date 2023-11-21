@@ -31,5 +31,11 @@ public class PageEntity implements Serializable {
     @ApiModelProperty("页面标题")
     private String title;
 
+    /**
+     * 前端路由
+     */
+    @ApiModelProperty("前端路由")
+    private String path;
+
 }
 

@@ -26,18 +26,31 @@
             <result column="connect_type" property="connectType" />
             <result column="connect_id" property="connectId" />
             <result column="item_sort" property="sort" />
+            <result column="connectTitle" property="connectTitle" />
         </collection>
     </resultMap>
 
     <select id="findFirstByPageId" resultMap="BannerMap">
-        select t.*, t1.*, t1.id item_id, t.sort banner_sort, t1.sort item_sort from sys_page_banner t
+        select t.*, t1.*, t1.id item_id, t.sort banner_sort, t1.sort item_sort ,
+               IF(t1.connect_type &lt; 20, (select sc.title from sys_case sc where sc.id = t1.connect_id),
+                  IF(t1.connect_type &lt; 30, (select svp.title from sys_view_point svp where svp.id = t1.connect_id),
+                     IF(t1.connect_type &lt; 40, (select sm.title from sys_message sm where sm.id = t1.connect_id),
+                        IF(t1.connect_type &lt; 50, (select sp.title from sys_position sp where sp.id = t1.connect_id),
+                        (select sp1.title from sys_page sp1 where sp1.id = t1.connect_id))))) connectTitle
+        from sys_page_banner t
         left join sys_page_banner_item t1 on t.id = t1.banner_id
         where t.page_id = #{pageId} and t.sort = 1
         order by t1.sort asc
     </select>
 
     <select id="findSecondByPageId" resultMap="BannerMap">
-        select t.*, t1.*, t1.id item_id, t.sort banner_sort, t1.sort item_sort from sys_page_banner t
+        select t.*, t1.*, t1.id item_id, t.sort banner_sort, t1.sort item_sort,
+               IF(t1.connect_type &lt; 20, (select sc.title from sys_case sc where sc.id = t1.connect_id),
+                  IF(t1.connect_type &lt; 30, (select svp.title from sys_view_point svp where svp.id = t1.connect_id),
+                     IF(t1.connect_type &lt; 40, (select sm.title from sys_message sm where sm.id = t1.connect_id),
+                        IF(t1.connect_type &lt; 50, (select sp.title from sys_position sp where sp.id = t1.connect_id),
+                           (select sp1.title from sys_page sp1 where sp1.id = t1.connect_id))))) connectTitle
+        from sys_page_banner t
         left join sys_page_banner_item t1 on t.id = t1.banner_id
         where t.page_id = #{pageId} and t.sort > 1
         order by t.sort asc, t1.sort asc
@@ -47,11 +60,11 @@
     </select>
 
     <select id="nextBanner" resultType="com.boge.system.entity.PageBannerEntity">
-        select id, min(sort) from sys_page_banner where page_id = #{pageId} and sort > #{sort}
+        select id, sort from sys_page_banner where page_id = #{pageId} and sort = #{sort}
     </select>
 
     <select id="pervBanner" resultType="com.boge.system.entity.PageBannerEntity">
-        select id, max(sort) from sys_page_banner where page_id = #{pageId} and sort &lt; #{sort}
+        select id, sort from sys_page_banner where page_id = #{pageId} and sort = #{sort}
     </select>
 
 </mapper>

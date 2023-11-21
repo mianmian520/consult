@@ -29,7 +29,7 @@ public class SwaggerConfig {
     public Docket createRestApis() {
         return new Docket(DocumentationType.OAS_30)
                 .enable(true)
-                .groupName("spring-boot-2.7.3")
+                .groupName("沸点咨询后台管理系统接口文档")
                 .genericModelSubstitutes(DeferredResult.class)
                 .useDefaultResponseMessages(false)
                 .forCodeGeneration(true)
@@ -49,7 +49,7 @@ public class SwaggerConfig {
                 .description("开发测试")
                 // 服务条款URL
                 // 作者信息
-                .contact(new Contact("boge", "", "qihh@136.com"))
+                .contact(new Contact("boge", "", "xxx@136.com"))
                 .version("0.0.1")
                 .build();
     }

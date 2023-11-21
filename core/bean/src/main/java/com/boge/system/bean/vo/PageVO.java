@@ -21,6 +21,12 @@ public class PageVO {
     @ApiModelProperty("页面标题")
     private String title;
 
+    /**
+     * 前端路由
+     */
+    @ApiModelProperty("前端路由")
+    private String path;
+
     @ApiModelProperty("轮播栏目")
     private PageBannerVO banner;
 

@@ -13,12 +13,10 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 标签表(Tag)表控制层
@@ -57,6 +55,17 @@ public class TagController extends BaseController<Long, TagDTO, TagVO, TagEntity
     public Result<Object> move(@PathVariable("id") Long id, Integer move) throws CustomException {
         tagService.move(id, move);
         return Result.success("移动成功", null);
+    }
+
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "标签id", required = true, dataTypeClass = Long.class),
+            @ApiImplicitParam(name = "type", value = "标签类型 与id互斥", required = true, dataTypeClass = Integer.class),
+            @ApiImplicitParam(name = "num", value = "前后数量默认1", dataTypeClass = Integer.class)
+    })
+    @ApiOperation("周围标签")
+    @GetMapping("/round")
+    public Result<List<TagVO>> round(@RequestParam(required = false) Long id, @RequestParam(required = false) Integer type, @RequestParam(required = false, defaultValue = "1") Integer num) throws CustomException {
+        return Result.success(tagService.round(id, type, num));
     }
 }
 

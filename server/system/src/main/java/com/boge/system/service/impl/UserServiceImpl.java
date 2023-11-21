@@ -14,6 +14,9 @@ import com.boge.system.entity.UserEntity;
 import com.boge.system.service.UserService;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 系统管理-人员表(User)表服务实现类
  *
@@ -24,7 +27,7 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl extends BaseServiceImpl<Long, UserDTO, UserVO, UserEntity, UserDao> implements UserService {
 
     @Override
-    public String login(LoginDTO dto) throws CustomException {
+    public Map<String, String> login(LoginDTO dto) throws CustomException {
         UserEntity user = getOne(Wrappers.<UserEntity>lambdaQuery().eq(UserEntity::getUserName, dto.getUserName()));
         if (user == null) {
             throw new CustomException(ResultEnum.UNAUTHORIZED.getCode(), "未找到用户,请重新登录");
@@ -32,6 +35,10 @@ public class UserServiceImpl extends BaseServiceImpl<Long, UserDTO, UserVO, User
         if (!user.getPassword().equals(PasswordUtil.encrypt(dto.getPassword()))) {
             throw new CustomException(ResultEnum.UNAUTHORIZED.getCode(), "用户名密码错误");
         }
-        return JwtUtil.generateToken(user.getId(), user.getUserName());
+        String token = JwtUtil.generateToken(user.getId(), user.getUserName());
+        Map<String, String> map = new HashMap<>(2);
+        map.put("token", token);
+        map.put("userName", user.getUserName());
+        return map;
     }
 }

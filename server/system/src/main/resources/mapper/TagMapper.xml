@@ -14,11 +14,11 @@
     </select>
 
     <select id="nextTag" resultType="com.boge.system.entity.TagEntity">
-        select id, min(sort) sort from sys_tag where type = #{type} and sort > #{sort}
+        select id, sort from sys_tag where type = #{type} and sort = #{sort}
     </select>
 
     <select id="prevTag" resultType="com.boge.system.entity.TagEntity">
-        select id, max(sort) sort from sys_tag where type = #{type} and sort &lt; #{sort}
+        select id, sort from sys_tag where type = #{type} and sort = #{sort}
     </select>
 
 </mapper>

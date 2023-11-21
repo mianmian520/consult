@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boge.system.dao.MessageDao">
+
+    <select id="next" resultType="com.boge.system.entity.MessageEntity">
+        select * from sys_message where time &lt; (select t.time from sys_message t where t.id = #{id}) order by time desc limit 1;
+    </select>
+    <select id="prev" resultType="com.boge.system.entity.MessageEntity">
+        select * from sys_message where time > (select t.time from sys_message t where t.id = #{id}) order by time limit 1;
+    </select>
+
+</mapper>
+

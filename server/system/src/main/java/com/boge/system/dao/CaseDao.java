@@ -23,5 +23,19 @@ public interface CaseDao extends BaseMapper<CaseEntity> {
      * @return  案例集合
      */
     Page<CaseVO> queryPage(Page<Object> objectPage, @Param("case") CaseDTO dto);
+
+    /**
+     * 下篇
+     * @param id    id
+     * @return  下篇
+     */
+    CaseEntity next(Long id);
+
+    /**
+     * 上篇
+     * @param id    id
+     * @return  上篇
+     */
+    CaseEntity prev(Long id);
 }
 

@@ -40,7 +40,6 @@ public class PositionDTO extends BaseDTO<Long> implements Serializable {
      */
     @ApiModelProperty("职位职责")
     @NotBlank(message = "职位职责不能为空", groups = {Validator.Create.class})
-    @MyQuery(like = true)
     private String duty;
 
     /**
@@ -48,7 +47,6 @@ public class PositionDTO extends BaseDTO<Long> implements Serializable {
      */
     @ApiModelProperty("职位要求")
     @NotBlank(message = "职位要求不能为空", groups = {Validator.Create.class})
-    @MyQuery(like = true)
     private String demand;
 }
 

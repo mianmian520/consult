@@ -1,6 +1,7 @@
 package com.boge.system.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.boge.core.common.consts.DateConstants;
@@ -55,5 +56,9 @@ public class FileEntity implements Serializable{
     @JsonFormat(pattern = DateConstants.YY_MM_DD_HH_MM_SS)
     private Date time;
 
+    @ApiModelProperty("文件url")
+    public String getFileUrl() {
+        return "/file/download/" + id;
+    }
 }
 

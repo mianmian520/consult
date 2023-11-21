@@ -2,6 +2,7 @@ package com.boge.system.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.boge.system.entity.MessageEntity;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -12,5 +13,18 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface MessageDao extends BaseMapper<MessageEntity> {
+    /**
+     * 下篇
+     * @param id    id
+     * @return  下篇
+     */
+    MessageEntity next(Long id);
+
+    /**
+     * 上篇
+     * @param id    id
+     * @return  上篇
+     */
+    MessageEntity prev(Long id);
 }
 

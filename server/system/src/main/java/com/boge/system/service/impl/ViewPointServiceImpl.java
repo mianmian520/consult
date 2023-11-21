@@ -7,6 +7,7 @@ import com.boge.core.common.base.model.PageBean;
 import com.boge.core.common.base.service.impl.BaseServiceImpl;
 import com.boge.core.common.exception.CustomException;
 import com.boge.system.bean.dto.ViewPointDTO;
+import com.boge.system.bean.vo.NextAndPrev;
 import com.boge.system.bean.vo.ViewPointTagVO;
 import com.boge.system.bean.vo.ViewPointVO;
 import com.boge.system.dao.ViewPointDao;
@@ -82,5 +83,25 @@ public class ViewPointServiceImpl extends BaseServiceImpl<Long, ViewPointDTO, Vi
         List<ViewPointTagVO> tags = viewPointTagService.findByPointId(id);
         detail.setTags(tags);
         return detail;
+    }
+
+    @Override
+    public NextAndPrev nextAndPrev(Long id) {
+        NextAndPrev nextAndPrev = new NextAndPrev();
+        ViewPointEntity entity = getById(id);
+        if(entity == null) {
+            return nextAndPrev;
+        }
+        ViewPointEntity next = baseMapper.next(id);
+        ViewPointEntity prev = baseMapper.prev(id);
+        if (next != null) {
+            nextAndPrev.setNextId(next.getId());
+            nextAndPrev.setNextTitle(next.getTitle());
+        }
+        if (prev != null) {
+            nextAndPrev.setPrevId(prev.getId());
+            nextAndPrev.setPervTitle(prev.getTitle());
+        }
+        return nextAndPrev;
     }
 }

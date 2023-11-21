@@ -40,6 +40,11 @@ public class MessageEntity extends BaseEntity<Long> implements Serializable {
      * 类型 1、建站知识库 2、外贸独立站知识库 3、营销型网站知识库 4、网站设计资讯 5、SEM 竞价资讯 6 、网站建设资讯
      */
     private Integer type;
+
+    /**
+     * 推荐 0、不推荐 1、推荐
+     */
+    private Integer recommend;
     /**
      * 题图（文件id）
      */
